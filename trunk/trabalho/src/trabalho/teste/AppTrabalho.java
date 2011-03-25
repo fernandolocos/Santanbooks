@@ -5,13 +5,15 @@ import trabalho.impl.Responder;
 import trabalho.inter.IEnquirer;
 import trabalho.inter.IResponder;
 
-public class AppBase03 
+public class AppTrabalho 
 {
+
 	public static void main(String[] args)
 	{
-       IEnquirer e = new Enquirer();
-       IResponder r = new Responder("tiranossauro");
+		IEnquirer e = new Enquirer();
+		IResponder r = new Responder("tiranossauro");
        
-       e.connect(r);
+		e.connect(r);
 	}
+
 }
