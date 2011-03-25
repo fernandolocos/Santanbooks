@@ -85,4 +85,19 @@ public class BaseConhecimento implements IBaseConhecimento
     	
     	return decl;
     }
+    
+    public String[] listaNomes()
+    {
+    	String[] v = new String[8];
+    	v[0] = "beija-flor";
+    	v[1] = "cachorro";
+    	v[2] = "canarinho";
+    	v[3] = "gato";
+    	v[4] = "jacare";
+    	v[5] = "macaco";
+    	v[6] = "tigre";
+    	v[7] = "tiranossauro";
+    	
+    	return v;
+    }
 }
