@@ -1,5 +1,6 @@
 package trabalho.impl;
 
+import java.util.Vector;
 import trabalho.impl.BaseConhecimento;
 import trabalho.inter.IBaseConhecimento;
 import trabalho.inter.IDeclaracao;
@@ -10,7 +11,9 @@ import trabalho.inter.IResponder;
 public class Enquirer implements IEnquirer 
 {
 	private String[] animais;
-	IObjetoConhecimento[] obj;
+	private IObjetoConhecimento[] obj;
+	private Vector<String> v;
+	//private Vector<String> valor;
 	
 	public Enquirer()
 	{
@@ -23,7 +26,7 @@ public class Enquirer implements IEnquirer
 		{
 			obj[i] =  bc.recuperaObjeto(animais[i]);
 		}
-		//obj = bc.recuperaObjeto(animais);
+		v = new Vector<String>();
 	}
 	
 	public void connect(IResponder responder) 
@@ -32,29 +35,42 @@ public class Enquirer implements IEnquirer
 		// todas as vezes que pergunta verifica se já não foi inserida no vetor em caso positivo não pergunta
 		// caso achar um animais que responder todas as perguntas corretamente retorna ele
 		
-		boolean acertei = false;
+		boolean achou = false;
 		
 		// percorrendo todos os animais
 		for(int i = 0; i < obj.length; i++)
-		{				
-			acertei = false;
+		{		
 		    IDeclaracao decl = obj[i].primeira();
-		    
-		    // corre todas as perguntas e verifica se todas as respostas são iguais, se forem decl == null
-		    while(decl != null && responder.ask(decl.getPropriedade()).equalsIgnoreCase(decl.getValor()))
+		    while(decl != null && v.contains(decl.getPropriedade()))
 		    	decl = obj[i].proxima();
-		    
-		    if(decl == null)
-		    	acertei = responder.finalAnswer(animais[i]);
-		    
-		    if(acertei)
-		    {
-		    	System.out.println(animais[i]);
-		    	break;
-		    }	    	
+		    if(decl != null)
+		    {	
+		    	v.add(decl.getPropriedade());
+		    	//System.out.println(decl.getPropriedade());
+			    // corre todas as perguntas e verifica se todas as respostas são iguais, se forem decl == null
+			    // se não existir a pergunta neste animal responder retorna não sei dando erro no equals
+			    while(decl != null && responder.ask(decl.getPropriedade()).equalsIgnoreCase(decl.getValor()))
+			    {
+			    	//System.out.println(decl.getPropriedade());
+			    	decl = obj[i].proxima();
+			    	// enquanto a pergunta existir dentro do vetor, passa para a proxima pergunta
+			    	while(decl != null && v.contains(decl.getPropriedade()))
+			    		decl = obj[i].proxima();
+			    	if(decl != null)v.add(decl.getPropriedade());
+			    }
+			    
+			    if(decl == null)
+			    {
+			    	achou = true;
+			    	System.out.println(animais[i]);
+			    	responder.finalAnswer(animais[i]);
+			    	break;
+			    }
+		    }
 		}
-		if(!acertei)
+		if(!achou)
 	    	System.out.println("nao sei");
+		//System.out.println(v.toString());
 	}
 
 }

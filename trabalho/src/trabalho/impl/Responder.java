@@ -1,5 +1,7 @@
 package trabalho.impl;
 
+import java.util.Vector;
+
 import trabalho.inter.IBaseConhecimento;
 import trabalho.inter.IDeclaracao;
 import trabalho.inter.IObjetoConhecimento;
@@ -9,16 +11,19 @@ public class Responder implements IResponder
 {
 	private String animal;
 	IObjetoConhecimento obj;
+	private Vector<String> v;
 	
 	public Responder(String animal)
 	{
 		this.animal = animal;
 		IBaseConhecimento bc = new BaseConhecimento();
 		obj = bc.recuperaObjeto(animal);
+		v = new Vector<String>();
 	}
 
 	public String ask(String question) 
 	{    
+		 v.add(question);
 	     IDeclaracao decl = obj.primeira();    
 	     String resp = "nao sei";
 	     
@@ -32,7 +37,8 @@ public class Responder implements IResponder
 	
 	public boolean finalAnswer (String answer)
 	{
-		return  answer.equalsIgnoreCase(animal);
+		System.out.println(v.toString());
+		return answer.equalsIgnoreCase(animal);
 	}
 
 }
