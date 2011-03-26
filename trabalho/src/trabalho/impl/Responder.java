@@ -11,19 +11,19 @@ public class Responder implements IResponder
 {
 	private String animal;
 	IObjetoConhecimento obj;
-	private Vector<String> v;
+	private Vector<String> propriedade;
 	
 	public Responder(String animal)
 	{
 		this.animal = animal;
 		IBaseConhecimento bc = new BaseConhecimento();
 		obj = bc.recuperaObjeto(animal);
-		v = new Vector<String>();
+		propriedade = new Vector<String>();
 	}
 
 	public String ask(String question) 
 	{    
-		 v.add(question);
+		 propriedade.add(question);
 	     IDeclaracao decl = obj.primeira();    
 	     String resp = "nao sei";
 	     
@@ -32,12 +32,13 @@ public class Responder implements IResponder
 	    	 if(decl.getPropriedade().equalsIgnoreCase(question))resp = decl.getValor();
 	    	 decl = obj.proxima();
 	     }
+	     propriedade.add(resp);
 	     return resp;
 	}
 	
 	public boolean finalAnswer (String answer)
 	{
-		System.out.println(v.toString());
+		System.out.println(propriedade.toString());
 		return answer.equalsIgnoreCase(animal);
 	}
 
