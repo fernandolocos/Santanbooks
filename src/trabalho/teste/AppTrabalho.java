@@ -11,7 +11,7 @@ public class AppTrabalho
 	public static void main(String[] args)
 	{
 		IEnquirer e = new EnquirerAdvanced();
-		IResponder r = new Responder("tiranossauro");
+		IResponder r = new Responder("cachorro");
        
 		e.connect(r);
 	}

@@ -7,15 +7,18 @@ import java.sql.Statement;
 
 public class CriaTabela 
 {
+	private String usuario;
+	private String senha;
+	
 	public CriaTabela(String usuario, String senha)
     {
-		geraTabela(usuario, senha);
+		this.usuario = usuario;
+		this.senha = senha;
     }
 	
-	public static void geraTabela(String usuario, String senha)
+	public boolean geraTabela()
     {  
-		int criouBd = 0;
-		
+		boolean criou = true;
 		try 
 		{
 			//Carrega driver do MySQL  
@@ -25,7 +28,7 @@ public class CriaTabela
 	        // cria um objeto de comandos SQL para a base
 	        Statement stmt = conn.createStatement();  
 	        //se nao existe, cria o banco de dados
-	        criouBd = stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS BASE");  
+	        stmt.executeUpdate("CREATE DATABASE BASE");  
 	       
         	//cria tabela 
         	stmt.executeUpdate("CREATE TABLE `BASE`.`GERAL`(`ORDEM` INTEGER " +
@@ -44,9 +47,36 @@ public class CriaTabela
 	        conn.close();
 	        
 		} catch (ClassNotFoundException erro) {
-            System.out.println(erro.getMessage());
+            criou = false;
         } catch (SQLException erro) {
-           
+        	criou = false;
         }
+        return criou;
     }  
+	
+	public void atualizaTabela()
+	{
+		try
+		{
+			//Carrega driver do MySQL  
+	        Class.forName("com.mysql.jdbc.Driver");  
+	        //Abre conexao com o banco  
+	        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost?user="+usuario+"&"+"password="+senha);  
+	        // cria um objeto de comandos SQL para a base
+	        Statement stmt = conn.createStatement();
+	        
+	        stmt.executeUpdate("UPDATE BASE.GERAL SET CHECKED=1");	
+	        
+	        // fecha o stmt
+	        stmt.close();
+
+            // fecha conexao
+	        conn.close();
+	        
+		} catch (ClassNotFoundException erro) {
+	        System.out.println(erro.getMessage());
+	    } catch (SQLException erro) {
+	    	System.out.println("Erro no SQL: " + erro.getMessage());
+	    }
+	}
 }
