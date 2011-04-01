@@ -11,7 +11,9 @@ import trabalho.banco.CriaTabela;
 import trabalho.banco.InsereTabela;
 import trabalho.impl.BaseConhecimento;
 import trabalho.inter.IBaseConhecimento;
+import trabalho.inter.IDeclaracao;
 import trabalho.inter.IEnquirer;
+import trabalho.inter.IObjetoConhecimento;
 import trabalho.inter.IResponder;
 
 public class EnquirerAdvanced implements IEnquirer 
@@ -21,6 +23,7 @@ public class EnquirerAdvanced implements IEnquirer
 	private Vector<String> propriedade;
 	private Vector<String> pergDiferentes;
 	private Vector<String> listaAnimais;
+	private Vector<String> pergFeitas;
 	
 	public EnquirerAdvanced()
 	{
@@ -33,15 +36,21 @@ public class EnquirerAdvanced implements IEnquirer
 		propriedade = new Vector<String>();
 		listaAnimais = new Vector<String>();
 		pergDiferentes = new Vector<String>();
+		pergFeitas = new Vector<String>();
 		
 		//insere elementos da lista de nomes em um Vector
 		for(int i = 0; i < animais.length; i++)
 			listaAnimais.add(animais[i]);
 		
-		// criando um banco de dados e uma tabela	
-		new CriaTabela(usuario, senha);
-		// insere os dados na tabela
-		new InsereTabela(animais, usuario, senha);
+		// criando um banco de dados	
+		CriaTabela cria = new CriaTabela(usuario, senha);
+		if(cria.geraTabela())
+		{
+			// insere os dados na tabela
+			new InsereTabela(animais, usuario, senha);
+		}
+		else
+			cria.atualizaTabela();
 	}
 	
 	/**
@@ -90,7 +99,7 @@ public class EnquirerAdvanced implements IEnquirer
 	        // cria um objeto de comandos SQL para a base
 	        Statement stmt = conn.createStatement();
 	        
-	        // faço uma consulta de perguntas distintas
+	        // faz uma consulta de perguntas distintas
 	        ResultSet listaPergDiferentes = stmt.executeQuery("SELECT DISTINCT(PERGUNTA) FROM BASE.GERAL G ORDER BY G.`PERGUNTA`");
 	        
 	        // insere o retorno da consulta em um vetor de String
@@ -104,11 +113,12 @@ public class EnquirerAdvanced implements IEnquirer
 	        // enquanto nao encontrar o animal procurado
 	        while(listaAnimais.size() > 1)
 	        {
-		        /* faz uma consulta que retorna todas as perguntas que ainda nao foram feitas e existem nos animais
+	          /* faz uma consulta que retorna todas as perguntas que ainda nao foram feitas e existem nos animais
 		         que ainda restam como possibilidade de ser o animal procurado*/
 	            ResultSet listaPerguntas = stmt.executeQuery("SELECT PERGUNTA FROM BASE.GERAL G " +
 	            		"WHERE G.`CHECKED` = 1 ORDER BY G.`PERGUNTA`");
-	
+	            
+	            // zero o vetor propriedade
 	            if(propriedade.size() > 0)propriedade.removeAllElements();
 	            // insere o retorno da consulta em um vetor de String
 	            temConteudo = listaPerguntas.next();
@@ -118,19 +128,50 @@ public class EnquirerAdvanced implements IEnquirer
 	                temConteudo = listaPerguntas.next();
 	            }
 	            
+	            // aqui testa o caso em que sobra mais de um animal sem perguntas a ser feitas
+	            if(propriedade.size() == 0)
+	            {
+	            	for(int i = 0; i < listaAnimais.size(); i++)
+		            {
+	            		boolean achou = false;
+	            		pergFeitas.lastElement();
+	            		IDeclaracao decl = null;
+	            		IObjetoConhecimento obj;
+	            		IBaseConhecimento bc = new BaseConhecimento();;
+						
+	            		obj = bc.recuperaObjeto(listaAnimais.get(i));
+	            		decl = obj.primeira();
+
+	            		while(decl != null && !achou)
+	            		{
+	            			// se a ultima pergunta feita tiver na base deste animal, achou = true
+	            			if(pergFeitas.lastElement().equalsIgnoreCase(decl.getPropriedade()))
+	            					achou = true;
+	            			decl = obj.proxima();
+	            		}
+	            		
+	            		if(achou)
+	            		{
+	            			// se achou remove o elemento da lista de animais possiveis
+	            			listaAnimais.removeElementAt(i);
+	            		}
+		            }
+	            }
+	            
 	            // chama o metodo que retorna a proxima pergunta
 	            String pergunta = proximaPergunta(propriedade, pergDiferentes);
+	            pergFeitas.add(pergunta);
 	            // chama o responder
 	            String resposta = responder.ask(pergunta);
 
-	            if(resposta.equals("sim") || resposta.equals("nao"))
-	            {
-	            	if(listaAnimais.size() > 0)listaAnimais.removeAllElements();
-	            	
+	            if(resposta.equalsIgnoreCase("sim") || resposta.equalsIgnoreCase("nao"))
+	            {            	
 		            // faz uma consulta que retorna quais animais ainda podem ser o animal procurado
-		            ResultSet listaAnimaisPossiveis = stmt.executeQuery("SELECT G.`ANIMAIS` FROM BASE.GERAL G " +
-		            		"WHERE G.`PERGUNTA` = '"+pergunta+"' AND G.`RESPOSTA` = '"+resposta+"'");
+		            ResultSet listaAnimaisPossiveis = stmt.executeQuery("SELECT DISTINCT(G.`ANIMAIS`) FROM BASE.GERAL G " +
+		            		"WHERE G.`PERGUNTA` = '"+pergunta+"' AND G.`RESPOSTA` = '"+resposta+"' AND CHECKED=1" );
 		            
+		            // zero o vetor de animais
+	            	if(listaAnimais.size() > 0)listaAnimais.removeAllElements();
 		            // insere o retorno da consulta em um vetor de String
 		            temConteudo = listaAnimaisPossiveis.next();
 		            while (temConteudo)
@@ -139,27 +180,33 @@ public class EnquirerAdvanced implements IEnquirer
 		                temConteudo = listaAnimaisPossiveis.next();
 		            }
 		            
-		            // seta o valor FALSE na coluna CHECK, para os animais e perguntas ja eliminadas
+		            // seta o valor FALSE na coluna CHECK, para os animais ja eliminadas
 		            stmt.executeUpdate("UPDATE GERAL SET CHECKED=0");
 		            for(int i = 0; i < listaAnimais.size(); i++)
 		            {
-		            	stmt.executeUpdate("UPDATE GERAL SET CHECKED=1 WHERE ANIMAIS = '"+listaAnimais.get(i)+
-		            			"' AND PERGUNTA != '"+pergunta+"'");
+		            	stmt.executeUpdate("UPDATE GERAL SET CHECKED=1 WHERE ANIMAIS = '"+listaAnimais.get(i)+"'");
+		            	listaAnimais.iterator();
+		            }
+		            // seta o valor FALSE na coluna CHECK, para todas as perguntas ja feitas
+		            for(int i = 0; i < pergFeitas.size(); i++)
+		            {
+		            	stmt.executeUpdate("UPDATE GERAL SET CHECKED=0 WHERE PERGUNTA = '"+pergFeitas.get(i)+"'");
 		            	listaAnimais.iterator();
 		            }
 	            }
 	            else 
 	            {
-	            	stmt.executeUpdate("UPDATE GERAL SET CHECKED=0 WHERE PERGUNTA = '"+pergunta+"'");
+	            	// seta o valor FALSE na coluna CHECK, para todas as perguntas ja feitas
+		            for(int i = 0; i < pergFeitas.size(); i++)
+		            {
+		            	stmt.executeUpdate("UPDATE GERAL SET CHECKED=0 WHERE PERGUNTA = '"+pergFeitas.get(i)+"'");
+		            	listaAnimais.iterator();
+		            }
 	            }
-	            //System.out.println(listaAnimais.toString());
 	        }
 	        
-            System.out.println(listaAnimais.toString());
-            responder.finalAnswer(listaAnimais.toString());
-            
-            //deleta o banco de dados
-            stmt.executeUpdate("DROP DATABASE BASE");   
+	        // passa o resultado para o responder
+            responder.finalAnswer(listaAnimais.toString());   
             
             // fecha stmt
             stmt.close();

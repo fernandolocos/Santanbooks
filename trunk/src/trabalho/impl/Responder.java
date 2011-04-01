@@ -38,6 +38,7 @@ public class Responder implements IResponder
 	
 	public boolean finalAnswer (String answer)
 	{
+		System.out.println(answer);
 		System.out.println(propriedade.toString());
 		return answer.equalsIgnoreCase(animal);
 	}
