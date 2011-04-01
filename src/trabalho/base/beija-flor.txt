@@ -1,0 +1,4 @@
+"ele para no ar", "sim"
+"ele bate as asas rapido", "sim"
+"ele voa", "sim"
+"ele tem bico pequeno", "nao"
