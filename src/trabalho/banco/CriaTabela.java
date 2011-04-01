@@ -1,6 +1,9 @@
 package trabalho.banco;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class CriaTabela 
 {
@@ -31,14 +34,14 @@ public class CriaTabela
 	        			"`ANIMAIS` VARCHAR(45) NOT NULL, " +
 	        			"`PERGUNTA` VARCHAR(45) NOT NULL, " +
 	        			"`RESPOSTA` VARCHAR(10) NOT NULL, " +
-	        			"`CHECK` BOOLEAN NOT NULL DEFAULT 1, " +
+	        			"`CHECKED` BOOLEAN NOT NULL DEFAULT 1, " +
 	        			"PRIMARY KEY (`ORDEM`))"
 	        	);	
 	        }
 	        else
 	        {
-	        	System.out.println("Ja existe o banco");
-	        	//aqui sera setado true na coluna check
+	        	//setado true na coluna check de toda a tabela
+	        	stmt.executeUpdate("UPDATE GERAL SET CHECKED=1");
 	        }
 	        
 	        // fecha o stmt
@@ -50,7 +53,7 @@ public class CriaTabela
 		} catch (ClassNotFoundException erro) {
             System.out.println(erro.getMessage());
         } catch (SQLException erro) {
-            System.out.println("Erro no SQL: " + erro.getMessage());
+           
         }
     }  
 }

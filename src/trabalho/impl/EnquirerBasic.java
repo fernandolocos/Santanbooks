@@ -2,7 +2,6 @@ package trabalho.impl;
 
 import java.util.Vector;
 
-import trabalho.impl.BaseConhecimento;
 import trabalho.inter.IBaseConhecimento;
 import trabalho.inter.IDeclaracao;
 import trabalho.inter.IEnquirer;
