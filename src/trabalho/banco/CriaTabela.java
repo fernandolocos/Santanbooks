@@ -26,23 +26,16 @@ public class CriaTabela
 	        Statement stmt = conn.createStatement();  
 	        //se nao existe, cria o banco de dados
 	        criouBd = stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS BASE");  
-	        if(criouBd != 0)
-	        {
-	        	//cria tabela 
-	        	stmt.executeUpdate("CREATE TABLE `BASE`.`GERAL`(`ORDEM` INTEGER " +
-	        			"UNSIGNED NOT NULL AUTO_INCREMENT, " +
-	        			"`ANIMAIS` VARCHAR(45) NOT NULL, " +
-	        			"`PERGUNTA` VARCHAR(45) NOT NULL, " +
-	        			"`RESPOSTA` VARCHAR(10) NOT NULL, " +
-	        			"`CHECKED` BOOLEAN NOT NULL DEFAULT 1, " +
-	        			"PRIMARY KEY (`ORDEM`))"
-	        	);	
-	        }
-	        else
-	        {
-	        	//setado true na coluna check de toda a tabela
-	        	stmt.executeUpdate("UPDATE GERAL SET CHECKED=1");
-	        }
+	       
+        	//cria tabela 
+        	stmt.executeUpdate("CREATE TABLE `BASE`.`GERAL`(`ORDEM` INTEGER " +
+        			"UNSIGNED NOT NULL AUTO_INCREMENT, " +
+        			"`ANIMAIS` VARCHAR(45) NOT NULL, " +
+        			"`PERGUNTA` VARCHAR(45) NOT NULL, " +
+        			"`RESPOSTA` VARCHAR(10) NOT NULL, " +
+        			"`CHECKED` BOOLEAN NOT NULL DEFAULT 1, " +
+        			"PRIMARY KEY (`ORDEM`))"
+        	);	
 	        
 	        // fecha o stmt
 	        stmt.close();
