@@ -12,15 +12,27 @@ import trabalho.inter.IObjetoConhecimento;
 
 public class InsereTabela
 {
-	private IObjetoConhecimento obj;
+	private IObjetoConhecimento obj; 
 	private IBaseConhecimento bc;
 	
+	/**
+	 * construtor da classe
+	 * @param listaNomes
+	 * @param usuario
+	 * @param senha
+	 */
 	public InsereTabela(String[] listaNomes, String usuario, String senha)
     {
 		bc = new BaseConhecimento();
 		insere(usuario, senha, listaNomes);
     }
     
+	/**
+	 * insere, metodo que insere dados na tabela do banco de dados
+	 * @param usuario
+	 * @param senha
+	 * @param listaNomes
+	 */
     public void insere(String usuario, String senha, String[] listaNomes)
     {
         try 
