@@ -44,8 +44,9 @@ public class CriaTabela
         			"UNSIGNED NOT NULL AUTO_INCREMENT, " +
         			"`ANIMAIS` VARCHAR(45) NOT NULL, " +
         			"`PERGUNTA` VARCHAR(45) NOT NULL, " +
-        			"`RESPOSTA` VARCHAR(10) NOT NULL, " +
+        			"`RESPOSTA` VARCHAR(3) NOT NULL, " +
         			"`CHECKED` BOOLEAN NOT NULL DEFAULT 1, " +
+        			"`RESPONDER` VARCHAR(7) DEFAULT NULL, " +
         			"PRIMARY KEY (`ORDEM`))"
         	);	
 	        
@@ -78,7 +79,8 @@ public class CriaTabela
 	        // cria um objeto de comandos SQL para a base
 	        Statement stmt = conn.createStatement();
 	        
-	        stmt.executeUpdate("UPDATE BASE.GERAL SET CHECKED=1");	
+	        stmt.executeUpdate("UPDATE BASE.GERAL SET CHECKED=1");
+	        stmt.executeUpdate("UPDATE BASE.GERAL SET RESPONDER=NULL");	
 	        
 	        // fecha o stmt
 	        stmt.close();
