@@ -32,44 +32,41 @@ public class EnquirerBasic implements IEnquirer
 	
 	public void connect(IResponder responder) 
 	{    
-		IDeclaracao decl = null;
 		String s;
-		boolean achou = false; //flag para quando achar o animal correto
-		boolean acertei = false; //flag para setar quando animal for o procurado
-		boolean correto;		//flag para perguntas corretas atï¿½ o momento
+		boolean achou = false, correto = false; //flag para quando achar o animal correto, flag para perguntas corretas até o momento
 		int pos;
 		
-		// percorrendo todos os animais (ou atï¿½ achar)
+		// percorrendo todos os animais (ou até achar)
 		for(int i = 0; i < obj.length && !achou; i++)
 		{		
-		    decl = obj[i].primeira();
+		    IDeclaracao decl = obj[i].primeira();
 		    correto = true;
-		    while(decl != null && correto){ //percorre as declaraï¿½ï¿½es do animal
+		    while(decl != null && correto){ //percorre as declarações do animal
 		    	if(propriedade.contains(decl.getPropriedade())){ //se a pergunta ja foi feita anteriormente
-		    		pos = propriedade.indexOf(decl.getPropriedade()); //acha a posiï¿½ï¿½o no vetor de perguntas
-		    		if(!valor.get(pos).equalsIgnoreCase(decl.getValor())) //testa no vetor de valores se a resposta estï¿½ correta 
+		    		pos = propriedade.indexOf(decl.getPropriedade()); //acha a posição no vetor de perguntas
+		    		if(!valor.get(pos).equalsIgnoreCase(decl.getValor())) //testa no vetor de valores se é igual à propriedade
 		    			correto = false; //indica que nao esta mais correto
 		    	}
 		    	else{
 		    		s = responder.ask(decl.getPropriedade());
 		    		propriedade.add(decl.getPropriedade()); //adiciona a pergunta no vetor de propriedades
-		    		valor.add(s); //adiciona a resposta no vetor de valores
+		    		valor.add(s); //adiciona a resposta no vetor de propriedades
 		    		if(!s.equalsIgnoreCase(decl.getValor()))
 		    			correto = false;
 		    	}
 		    	if(correto) decl = obj[i].proxima();
 		    }
 		    
-		    if(decl == null)
-		    {
+		    if(decl == null){
 		    	achou = true;
-		    	acertei = responder.finalAnswer(animais[i]);
-		    	if (acertei)break;
+		    	correto = responder.finalAnswer(animais[i]);
 		    }
 		}
 		
-		if(!achou)
-	    	System.out.println("nao sei");
+		if(correto)
+	    	System.out.println("Oba! Acertei");
+		else
+	    	System.out.println("fuem fuem fuem!");
 	}
 
 }
