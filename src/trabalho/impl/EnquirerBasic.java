@@ -64,7 +64,6 @@ public class EnquirerBasic implements IEnquirer
 		    {
 		    	achou = true;
 		    	acertei = responder.finalAnswer(animais[i]);
-		    	System.out.println(animais[i]);
 		    	if (acertei)break;
 		    }
 		}

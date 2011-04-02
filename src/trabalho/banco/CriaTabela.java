@@ -7,30 +7,39 @@ import java.sql.Statement;
 
 public class CriaTabela 
 {
-	private String usuario;
-	private String senha;
+	private String usuario; // usuario da conexao com o banco de dados
+	private String senha;	// senha da conexao com o banco de dados
 	
+	/**
+	 * construtor da classe
+	 * @param usuario
+	 * @param senha
+	 */
 	public CriaTabela(String usuario, String senha)
     {
 		this.usuario = usuario;
 		this.senha = senha;
     }
 	
+	/**
+	 * geraTabela metodo que cria o banco de dados e a tabela
+	 * @return boolean criou => verifica se a tabela foi criada
+	 */
 	public boolean geraTabela()
     {  
 		boolean criou = true;
 		try 
 		{
-			//Carrega driver do MySQL  
+			// Carrega driver do MySQL  
 	        Class.forName("com.mysql.jdbc.Driver");  
-	        //Abre conexao com o banco  
+	        // Abre conexao com o banco  
 	        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost?user="+usuario+"&"+"password="+senha);  
 	        // cria um objeto de comandos SQL para a base
 	        Statement stmt = conn.createStatement();  
-	        //se nao existe, cria o banco de dados
+	        // cria o banco de dados
 	        stmt.executeUpdate("CREATE DATABASE BASE");  
 	       
-        	//cria tabela 
+        	// cria tabela 
         	stmt.executeUpdate("CREATE TABLE `BASE`.`GERAL`(`ORDEM` INTEGER " +
         			"UNSIGNED NOT NULL AUTO_INCREMENT, " +
         			"`ANIMAIS` VARCHAR(45) NOT NULL, " +
@@ -54,6 +63,10 @@ public class CriaTabela
         return criou;
     }  
 	
+	/**
+	 * atualizaTabela, metodo que e acionado caso ja exista tabela criada.
+	 * E o responsavel por 'limpar' dados contidos da ultima execucao.
+	 */
 	public void atualizaTabela()
 	{
 		try

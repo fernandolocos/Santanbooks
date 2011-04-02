@@ -18,13 +18,18 @@ import trabalho.inter.IResponder;
 
 public class EnquirerAdvanced implements IEnquirer 
 {
-	private String[] animais;
-	private String usuario, senha;
-	private Vector<String> propriedade;
-	private Vector<String> pergDiferentes;
-	private Vector<String> listaAnimais;
-	private Vector<String> pergFeitas;
+	private String[] animais;				// recebe o vetor listaNomes da baseConhecimento
+	private String usuario, senha;			// recebe os valores para conexao do banco
+	private Vector<String> propriedade;		// vetor que armazena todas as perguntas consultadas
+	private Vector<String> pergDiferentes;	// vetor que armazena as perguntas distintas
+	private Vector<String> listaAnimais;	// vetor que armazena os possiveis animais
+	private Vector<String> pergFeitas;		// vetor que armazena as perguntas ja feitas
 	
+	/**
+	 * construtor da classe, recebe os valores para conexao
+	 * instancia classes, cria vetores, alem de criar um
+	 * banco de dados e uma tabela
+	 */
 	public EnquirerAdvanced()
 	{
 		// neste local se insere os dados da conexao com o banco
@@ -50,6 +55,7 @@ public class EnquirerAdvanced implements IEnquirer
 			new InsereTabela(animais, usuario, senha);
 		}
 		else
+			// se ja existe o banco, atualiza os dados para uma nova utilizacao
 			cria.atualizaTabela();
 	}
 	
@@ -88,6 +94,11 @@ public class EnquirerAdvanced implements IEnquirer
 		return pergunta;
 	}
 	
+	/**
+	 * connect, tem a funcao de realizar as perguntas para um usuario
+	 * e escolher a melhor opcao de resposta dentro de uma base de dados determinada
+	 * @param IResponder responder  
+	 */
 	public void connect(IResponder responder) 
 	{    
 		try 
@@ -120,7 +131,7 @@ public class EnquirerAdvanced implements IEnquirer
 	            
 	            // zero o vetor propriedade
 	            if(propriedade.size() > 0)propriedade.removeAllElements();
-	            // insere o retorno da consulta em um vetor de String
+	            // insere o retorno da consulta no vetor de String propriedade
 	            temConteudo = listaPerguntas.next();
 	            while (temConteudo)
 	            {
@@ -156,6 +167,7 @@ public class EnquirerAdvanced implements IEnquirer
 	            			listaAnimais.removeElementAt(i);
 	            		}
 		            }
+	            	break;
 	            }
 	            
 	            // chama o metodo que retorna a proxima pergunta
@@ -163,7 +175,7 @@ public class EnquirerAdvanced implements IEnquirer
 	            pergFeitas.add(pergunta);
 	            // chama o responder
 	            String resposta = responder.ask(pergunta);
-
+	            
 	            if(resposta.equalsIgnoreCase("sim") || resposta.equalsIgnoreCase("nao"))
 	            {            	
 		            // faz uma consulta que retorna quais animais ainda podem ser o animal procurado
@@ -172,7 +184,7 @@ public class EnquirerAdvanced implements IEnquirer
 		            
 		            // zero o vetor de animais
 	            	if(listaAnimais.size() > 0)listaAnimais.removeAllElements();
-		            // insere o retorno da consulta em um vetor de String
+		            // insere o retorno da consulta no vetor de String Animais
 		            temConteudo = listaAnimaisPossiveis.next();
 		            while (temConteudo)
 		            {
@@ -180,14 +192,15 @@ public class EnquirerAdvanced implements IEnquirer
 		                temConteudo = listaAnimaisPossiveis.next();
 		            }
 		            
-		            // seta o valor FALSE na coluna CHECK, para os animais ja eliminadas
+		            // seta o valor FALSE na coluna CHECK, para todos os animais
 		            stmt.executeUpdate("UPDATE GERAL SET CHECKED=0");
 		            for(int i = 0; i < listaAnimais.size(); i++)
 		            {
+		            	// depois disso seta TRUE para todos animais que ainda tem possibilidade
 		            	stmt.executeUpdate("UPDATE GERAL SET CHECKED=1 WHERE ANIMAIS = '"+listaAnimais.get(i)+"'");
 		            	listaAnimais.iterator();
 		            }
-		            // seta o valor FALSE na coluna CHECK, para todas as perguntas ja feitas
+		            // seta o valor FALSE na coluna CHECK, para todas as perguntas ja feitas destes animais
 		            for(int i = 0; i < pergFeitas.size(); i++)
 		            {
 		            	stmt.executeUpdate("UPDATE GERAL SET CHECKED=0 WHERE PERGUNTA = '"+pergFeitas.get(i)+"'");
