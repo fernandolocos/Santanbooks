@@ -1,6 +1,7 @@
 package trabalho.impl;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
@@ -14,8 +15,22 @@ public class BaseConhecimento implements IBaseConhecimento
 	public static final String DIRETORIO_RAIZ = "trabalho/base/",
 	                           EXTENSAO = ".txt";
 	
+	public String[] listaNomes()
+    {
+        File diretorioRaiz = new File(DIRETORIO_RAIZ);
+        
+        String lista[] = diretorioRaiz.list();
+        Vector listaFiltrada = new Vector();
+        
+        for (int n = 0; n < lista.length; n++)
+            if (lista[n].endsWith(".txt"))
+                listaFiltrada.add(lista[n].substring(0, lista[n].length() - 4));
+        
+        return (String[])listaFiltrada.toArray(new String[0]);
+    }
+    
     /* (non-Javadoc)
-	 * @see trabalho.impl.IBaseConhecimento#recuperaObjeto(java.lang.String)
+	 * @see pt.c03casochave.s01base.impl.IBaseConhecimento#recuperaObjeto(java.lang.String)
 	 */
     public IObjetoConhecimento recuperaObjeto(String nome)
     {
@@ -84,20 +99,5 @@ public class BaseConhecimento implements IBaseConhecimento
     		decl = new Declaracao(propriedade, valor);
     	
     	return decl;
-    }
-    
-    public String[] listaNomes()
-    {
-    	String[] v = new String[8];
-    	v[0] = "beija-flor";
-    	v[1] = "cachorro";
-    	v[2] = "canarinho";
-    	v[3] = "gato";
-    	v[4] = "jacare";
-    	v[5] = "macaco";
-    	v[6] = "tigre";
-    	v[7] = "tiranossauro";
-    	
-    	return v;
     }
 }

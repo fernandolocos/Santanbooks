@@ -1,4 +1,0 @@
-"e um mamifero", "sim"
-"tem quatro patas", "sim"
-"sabe latir", "sim"
-"ele voa", "nao"
