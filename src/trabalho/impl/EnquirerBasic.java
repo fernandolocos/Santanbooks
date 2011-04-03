@@ -63,10 +63,10 @@ public class EnquirerBasic implements IEnquirer
 		    }
 		}
 		
-		if(correto)
-	    	System.out.println("Oba! Acertei");
-		else
-	    	System.out.println("fuem fuem fuem!");
+//		if(correto)
+//	    	System.out.println("Oba! Acertei");
+//		else
+//	    	System.out.println("fuem fuem fuem!");
 	}
 
 }

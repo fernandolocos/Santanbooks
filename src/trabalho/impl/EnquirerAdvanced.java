@@ -33,7 +33,7 @@ public class EnquirerAdvanced implements IEnquirer
 	{
 		// neste local se insere os dados da conexao com o banco
 		usuario = "root";
-		senha = "26071946";
+		senha = "123456"; //mudar senha de acordo com a conexao da maquina
 		
 		IBaseConhecimento bc = new BaseConhecimento();
 		animais = bc.listaNomes();
@@ -151,7 +151,7 @@ public class EnquirerAdvanced implements IEnquirer
             		
             		while(listaAnimais.size() > 1)
             		{
-            			System.out.println(pergFeitas.size());
+            			//System.out.println(pergFeitas.size());
 		            	for(int i = 0; i < listaAnimais.size(); i++)
 			            {
 		            		
@@ -169,8 +169,8 @@ public class EnquirerAdvanced implements IEnquirer
 		            		
 		            		if(achou)
 		            		{
-		            			System.out.println(pergFeitas.lastElement());
-		            			System.out.println(listaAnimais.get(i));
+		            			//System.out.println(pergFeitas.lastElement());
+		            			//System.out.println(listaAnimais.get(i));
 		            			// se achou remove o elemento da lista de animais possiveis
 		            			listaAnimais.removeElementAt(i);
 		            		}
@@ -235,7 +235,7 @@ public class EnquirerAdvanced implements IEnquirer
 	        }
 	        
 	        // passa o resultado para o responder
-            responder.finalAnswer(listaAnimais.toString());   
+            responder.finalAnswer(listaAnimais.toString());
             
             // fecha stmt
             stmt.close();
