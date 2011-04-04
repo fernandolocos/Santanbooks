@@ -10,9 +10,7 @@ import java.util.Vector;
 import trabalho.banco.CriaTabela;
 import trabalho.banco.InsereTabela;
 import trabalho.inter.IBaseConhecimento;
-import trabalho.inter.IDeclaracao;
 import trabalho.inter.IEnquirer;
-import trabalho.inter.IObjetoConhecimento;
 import trabalho.inter.IResponder;
 
 public class EnquirerAdvanced implements IEnquirer 
@@ -141,39 +139,28 @@ public class EnquirerAdvanced implements IEnquirer
 	            // aqui testa o caso em que sobra mais de um animal sem perguntas a ser feitas
 	            if(propriedade.size() == 0)
 	            {
-	            	
-            		IDeclaracao decl = null;
-            		IObjetoConhecimento obj;
-            		IBaseConhecimento bc = new BaseConhecimento();
-            		//System.out.println(listaAnimais.toString());
-            		
-            		
             		
             		while(listaAnimais.size() > 1)
             		{
-            			//System.out.println(pergFeitas.size());
+            			ResultSet animaisCasoEspecial;
+            			
+            			//percorre os animais possíveis
 		            	for(int i = 0; i < listaAnimais.size(); i++)
 			            {
+		            		//seleciona o animal i se ele tiver a ultima pergunta
+		            		animaisCasoEspecial = stmt.executeQuery("SELECT ANIMAIS, RESPOSTA, RESPONDER FROM BASE.GERAL G " +
+	    		            		"WHERE G.`PERGUNTA` = '"+pergFeitas.lastElement()+"' AND G.`ANIMAIS` = '"+listaAnimais.get(i)+"'");
 		            		
-		            		boolean achou = false;
-		            		obj = bc.recuperaObjeto(listaAnimais.get(i));
-		            		decl = obj.primeira();
-		            		
-		            		while(decl != null && !achou)
-		            		{
-		            			// se a ultima pergunta feita tiver na base deste animal, achou = true
-		            			if(pergFeitas.lastElement().equalsIgnoreCase(decl.getPropriedade()))
-		            					achou = true;
-		            			decl = obj.proxima();
-		            		}
-		            		
-		            		if(achou)
-		            		{
-		            			//System.out.println(pergFeitas.lastElement());
-		            			//System.out.println(listaAnimais.get(i));
-		            			// se achou remove o elemento da lista de animais possiveis
-		            			listaAnimais.removeElementAt(i);
-		            		}
+		            		temConteudo = animaisCasoEspecial.next();
+		    	            while (temConteudo)
+		    	            {
+		    	                //System.out.println(animaisCasoEspecial.getString("ANIMAIS"));
+		    	                //se a resposta do animal for diferente da resposta obtida pelo responder, elimina ele da lista
+		    	                if(!animaisCasoEspecial.getString("RESPOSTA").equalsIgnoreCase(animaisCasoEspecial.getString("RESPONDER")))
+		    	                	listaAnimais.removeElementAt(i);
+		    	                temConteudo = animaisCasoEspecial.next();
+		    	            }
+		    	            
 			            }
 		            	// elimino do vetor perguntas feitas esta pergunta
             			pergFeitas.removeElementAt(pergFeitas.size() - 1);
@@ -235,7 +222,7 @@ public class EnquirerAdvanced implements IEnquirer
 	        }
 	        
 	        // passa o resultado para o responder
-            responder.finalAnswer(listaAnimais.toString());
+            responder.finalAnswer(listaAnimais.firstElement());
             
             // fecha stmt
             stmt.close();
