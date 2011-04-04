@@ -139,30 +139,35 @@ public class EnquirerAdvanced implements IEnquirer
 	            // aqui testa o caso em que sobra mais de um animal sem perguntas a ser feitas
 	            if(propriedade.size() == 0)
 	            {
-            		
             		while(listaAnimais.size() > 1)
             		{
             			ResultSet animaisCasoEspecial;
             			
-            			//percorre os animais possíveis
+            			//percorre os animais possiveis
 		            	for(int i = 0; i < listaAnimais.size(); i++)
 			            {
 		            		//seleciona o animal i se ele tiver a ultima pergunta
-		            		animaisCasoEspecial = stmt.executeQuery("SELECT ANIMAIS, RESPOSTA, RESPONDER FROM BASE.GERAL G " +
+		            		animaisCasoEspecial = stmt.executeQuery("SELECT RESPOSTA, RESPONDER FROM BASE.GERAL G " +
 	    		            		"WHERE G.`PERGUNTA` = '"+pergFeitas.lastElement()+"' AND G.`ANIMAIS` = '"+listaAnimais.get(i)+"'");
 		            		
 		            		temConteudo = animaisCasoEspecial.next();
-		    	            while (temConteudo)
+		    	            if(temConteudo)
 		    	            {
-		    	                //System.out.println(animaisCasoEspecial.getString("ANIMAIS"));
 		    	                //se a resposta do animal for diferente da resposta obtida pelo responder, elimina ele da lista
 		    	                if(!animaisCasoEspecial.getString("RESPOSTA").equalsIgnoreCase(animaisCasoEspecial.getString("RESPONDER")))
 		    	                	listaAnimais.removeElementAt(i);
-		    	                temConteudo = animaisCasoEspecial.next();
 		    	            }
-		    	            
+		    	            else{ //se nao tiver a pergunta no animal i (ou seja, ele nao tem essa propriedade)
+		    	            	animaisCasoEspecial = stmt.executeQuery("SELECT DISTINCT(RESPONDER) FROM BASE.GERAL G " +
+		    		            		"WHERE G.`PERGUNTA` = '"+pergFeitas.lastElement()+"'");
+		    	            	temConteudo = animaisCasoEspecial.next();
+		    	            	//se o responder forneceu sim ou nao, esse animal nao e' o procurado, pois deveria ter a propriedade
+		    	            	if(temConteudo && !animaisCasoEspecial.getString("RESPONDER").equalsIgnoreCase("nao sei"))
+		    	            		listaAnimais.removeElementAt(i);
+		    	            }
+
 			            }
-		            	// elimino do vetor perguntas feitas esta pergunta
+		            	// elimina do vetor perguntas feitas esta pergunta
             			pergFeitas.removeElementAt(pergFeitas.size() - 1);
             		}
 	            	break;
@@ -222,6 +227,7 @@ public class EnquirerAdvanced implements IEnquirer
 	        }
 	        
 	        // passa o resultado para o responder
+	        if(listaAnimais.size() == 0) listaAnimais.add("nenhum");
             responder.finalAnswer(listaAnimais.firstElement());
             
             // fecha stmt
