@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <config>
     <dccs>
-        <dcc mainModule="pt.c02foundations.frango.QuestionsHash"/>        
+        <dcc mainModule="pt.c03ensaios.frango.QuestionsHash"/>        
     </dccs>
 </config>
