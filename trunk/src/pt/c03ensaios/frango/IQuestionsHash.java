@@ -11,7 +11,7 @@ import anima.component.ISupports;
  * @author Maurício Bertanha and Rodrigo Elizeu Gonçalves
  *
  */
-@ComponentInterface("<http://purl.org/dcc/pt.c02foundations.frango.IQuestionsHash>")
+@ComponentInterface("<http://purl.org/dcc/pt.c03ensaios.frango.IQuestionsHash>")
 public interface IQuestionsHash extends ISupports{
 
     /**

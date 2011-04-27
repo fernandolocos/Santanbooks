@@ -51,13 +51,13 @@ public class EnquirerAdvanced implements IEnquirer {
 
 				// instances the component based on its URI
 				hashRespostasSim = factory
-						.createInstance("<http://purl.org/dcc/pt.c02foundations.frango.QuestionsHash>");
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 
 				hashRespostasNao = factory
-						.createInstance("<http://purl.org/dcc/pt.c02foundations.frango.QuestionsHash>");
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 
 				hashRespostasNaoSei = factory
-						.createInstance("<http://purl.org/dcc/pt.c02foundations.frango.QuestionsHash>");
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
