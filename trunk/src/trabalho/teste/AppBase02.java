@@ -1,7 +1,7 @@
 package trabalho.teste;
 
+import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import trabalho.impl.Responder;
-import trabalho.inter.IResponder;
 
 public class AppBase02 
 {

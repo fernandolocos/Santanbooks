@@ -6,9 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
 
-import trabalho.inter.IBaseConhecimento;
-import trabalho.inter.IDeclaracao;
-import trabalho.inter.IObjetoConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IBaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IDeclaracao;
+import pt.c01interfaces.s01chaveid.s01base.inter.IObjetoConhecimento;
+
 
 public class BaseConhecimento implements IBaseConhecimento
 {

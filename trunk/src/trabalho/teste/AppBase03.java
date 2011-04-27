@@ -1,9 +1,9 @@
 package trabalho.teste;
 
+import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
+import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import trabalho.impl.EnquirerBasic;
 import trabalho.impl.Responder;
-import trabalho.inter.IEnquirer;
-import trabalho.inter.IResponder;
 
 public class AppBase03 
 {

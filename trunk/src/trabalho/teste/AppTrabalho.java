@@ -1,12 +1,12 @@
 package trabalho.teste;
 
-import trabalho.impl.BaseConhecimento;
-import trabalho.impl.EnquirerAdvanced;
+import pt.c01interfaces.s01chaveid.fejao.EnquirerAdvanced;
+import pt.c01interfaces.s01chaveid.s01base.impl.BaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IBaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
+import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import trabalho.impl.EnquirerBasic;
 import trabalho.impl.Responder;
-import trabalho.inter.IBaseConhecimento;
-import trabalho.inter.IEnquirer;
-import trabalho.inter.IResponder;
 
 public class AppTrabalho 
 {
