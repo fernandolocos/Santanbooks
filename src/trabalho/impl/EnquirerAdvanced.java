@@ -7,11 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import pt.c01interfaces.s01chaveid.s01base.inter.IBaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
+import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import trabalho.banco.CriaTabela;
 import trabalho.banco.InsereTabela;
-import trabalho.inter.IBaseConhecimento;
-import trabalho.inter.IEnquirer;
-import trabalho.inter.IResponder;
+
 
 public class EnquirerAdvanced implements IEnquirer 
 {

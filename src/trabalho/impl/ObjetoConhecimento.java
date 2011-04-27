@@ -1,7 +1,7 @@
 package trabalho.impl;
 
-import trabalho.inter.IDeclaracao;
-import trabalho.inter.IObjetoConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IDeclaracao;
+import pt.c01interfaces.s01chaveid.s01base.inter.IObjetoConhecimento;
 
 
 public class ObjetoConhecimento implements IObjetoConhecimento

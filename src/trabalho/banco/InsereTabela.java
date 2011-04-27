@@ -5,10 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import trabalho.impl.BaseConhecimento;
-import trabalho.inter.IBaseConhecimento;
-import trabalho.inter.IDeclaracao;
-import trabalho.inter.IObjetoConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.impl.BaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IBaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IDeclaracao;
+import pt.c01interfaces.s01chaveid.s01base.inter.IObjetoConhecimento;
+
 
 public class InsereTabela
 {

@@ -1,6 +1,6 @@
 package trabalho.impl;
 
-import trabalho.inter.IDeclaracao;
+import pt.c01interfaces.s01chaveid.s01base.inter.IDeclaracao;
 
 public class Declaracao implements IDeclaracao
 {

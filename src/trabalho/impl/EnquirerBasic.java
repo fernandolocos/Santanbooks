@@ -2,11 +2,12 @@ package trabalho.impl;
 
 import java.util.Vector;
 
-import trabalho.inter.IBaseConhecimento;
-import trabalho.inter.IDeclaracao;
-import trabalho.inter.IEnquirer;
-import trabalho.inter.IObjetoConhecimento;
-import trabalho.inter.IResponder;
+import pt.c01interfaces.s01chaveid.s01base.inter.IBaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IDeclaracao;
+import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
+import pt.c01interfaces.s01chaveid.s01base.inter.IObjetoConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
+
 
 public class EnquirerBasic implements IEnquirer 
 {
