@@ -12,7 +12,7 @@ import anima.component.base.ComponentBase;
  * @author mbertanha
  * 
  */
-@Component(id = "<http://purl.org/dcc/pt.c02foundations.frango.QuestionsHash>", provides = { "<http://purl.org/dcc/pt.c02foundations.frango.IQuestionsHash>" })
+@Component(id = "<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>", provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.frango.IQuestionsHash>" })
 public class QuestionsHash extends ComponentBase implements IQuestionsHash {
 	private HashMap<String, List<String>> hash;
 	private List<String> questions;
