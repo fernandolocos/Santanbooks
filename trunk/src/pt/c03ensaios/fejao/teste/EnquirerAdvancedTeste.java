@@ -90,7 +90,7 @@ public class EnquirerAdvancedTeste implements IEnquirer{
 	public void connect(IResponder responder) {
 		boolean acertei, encontrado = false;
 		String nomeAnimal = null;
-		List<String> listaPossiveisAnimais = new ArrayList<String>();
+		//List<String> listaPossiveisAnimais = new ArrayList<String>();
 		PossibleAnimalsHash hashAnimais = new PossibleAnimalsHash();
 
 		// utiliza a lista de perguntas que foi montada anteriormente e vai
@@ -98,24 +98,11 @@ public class EnquirerAdvancedTeste implements IEnquirer{
 		for (int i = 0; ((i < listaPerguntas.size()) && (!encontrado)); i++) {
 			String resposta = responder.ask((String) listaPerguntas.get(i));
 
-			// faz uma intersecção das listas, quardando os possiveis animais
-			// para a resposta final
-			if (resposta.equalsIgnoreCase("nao")) {
-				listaPossiveisAnimais = intersectList(
-						hashRespostasSim.getAnimals((String) listaPerguntas
-								.get(i)), listaPossiveisAnimais);
-			} else if (resposta.equalsIgnoreCase("sim")) {
-				listaPossiveisAnimais = intersectList(
-						hashRespostasNao.getAnimals((String) listaPerguntas
-								.get(i)), listaPossiveisAnimais);
-			} else if (resposta.equalsIgnoreCase("nao sei")) {
-				listaPossiveisAnimais = intersectList(
-						hashRespostasNaoSei.getAnimals((String) listaPerguntas
-								.get(i)), listaPossiveisAnimais);
-			}
+			// determina uma nova lista de possiveis animais
+			hashAnimais.DeterminesPossibleAnimals(listaPerguntas.get(i), resposta);
 			
 			// insere a lista de possiveis animais
-			hashAnimais.putPossibleAnimalsList(listaPossiveisAnimais);
+			//hashAnimais.putPossibleAnimalsList(listaPossiveisAnimais);
 
 			if (hashAnimais.getListSize() == 1) {
 				nomeAnimal = hashAnimais.getPossibleAnimalsList().get(0);
@@ -134,32 +121,6 @@ public class EnquirerAdvancedTeste implements IEnquirer{
 		} else {
 			System.out.println("fuem! fuem! fuem!");
 		}
-	}
-
-	private List<String> intersectList(List<String> l1, List<String> l2) {
-		if (l1.isEmpty()) {
-			return l2;
-		} else if (l2.isEmpty()) {
-			return l1;
-		}
-
-		int size = (l1.size() > l2.size()) ? l1.size() : l2.size();
-		List<String> listIntersected = new ArrayList<String>();
-
-		for (int i = 0; i < size; i++) {
-			if (l1.size() > l2.size()) {
-				if (l2.contains(l1.get(i))) {
-					listIntersected.add(l1.get(i));
-				}
-			} else {
-				if (l1.contains(l2.get(i))) {
-					listIntersected.add(l2.get(i));
-				}
-			}
-
-		}
-
-		return listIntersected;
 	}
 
 	private void insertIntoHash(String question) {
