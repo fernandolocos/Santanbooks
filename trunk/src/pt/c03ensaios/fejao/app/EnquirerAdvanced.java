@@ -1,4 +1,4 @@
-package pt.c03ensaios.fejao.teste;
+package pt.c03ensaios.fejao.app;
 
 import java.util.ArrayList;
 import java.util.List;
