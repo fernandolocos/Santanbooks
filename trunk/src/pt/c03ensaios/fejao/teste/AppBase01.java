@@ -3,11 +3,10 @@ package pt.c03ensaios.fejao.teste;
 import pt.c01interfaces.s01chaveid.s01base.impl.BaseConhecimento;
 import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
-import pt.c03ensaios.fejao.teste.EnquirerAdvancedTeste;
+import pt.c03ensaios.fejao.teste.EnquirerAdvanced;
 import pt.c03ensaios.frango.appTest.Responder;
 
-public class AppTeste01 {
-
+public class AppBase01 {
 
 	public static void main(String[] args) {
 		String nomeAnimal;
@@ -19,12 +18,11 @@ public class AppTeste01 {
             nomeAnimal = listaNomes[i];
             System.out.print("Advanced: ");
             enquirerAdvancedTest(nomeAnimal);
-        }
-		
+        }	
 	}
 
     public static void enquirerAdvancedTest(String nomeAnimal) {
-        IEnquirer ea = new EnquirerAdvancedTeste();
+        IEnquirer ea = new EnquirerAdvanced();
         IResponder ra = new Responder(nomeAnimal);
 
         ea.connect(ra);

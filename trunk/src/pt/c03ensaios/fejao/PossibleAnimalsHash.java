@@ -1,10 +1,17 @@
 package pt.c03ensaios.fejao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import pt.c01interfaces.s01chaveid.s01base.impl.BaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IBaseConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IDeclaracao;
+import pt.c01interfaces.s01chaveid.s01base.inter.IObjetoConhecimento;
+import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import pt.c03ensaios.frango.IQuestionsHash;
 import pt.c03ensaios.frango.QuestionsHash;
+import pt.c03ensaios.frango.appTest.Responder;
 
 import anima.annotation.Component;
 import anima.component.base.ComponentBase;
@@ -14,31 +21,59 @@ import anima.factory.context.componentContext.ComponentContextFactory;
 @Component(id = "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>", 
 		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" })
 public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash {
-	private List<String> animals = null;
-	private IQuestionsHash hashAnswerYes;
-	private IQuestionsHash hashAnswerNo;
-	private IQuestionsHash hashAnswerDontKnow;
+	private List<String> animals;
+	private static IBaseConhecimento base;
+	private static String[] listNames;
+	private static IQuestionsHash hashAnswerYes;
+	private static IQuestionsHash hashAnswerNo;
+	private static IQuestionsHash hashAnswerDontKnow;
+	private static List<String> listQuestions = new ArrayList<String>();
+	private static HashMap<String, IResponder> responders = new HashMap<String, IResponder>();
+	private static HashMap<String, IObjetoConhecimento> objs = new HashMap<String, IObjetoConhecimento>();
+	private static Boolean inserted = false;
 	
 	public PossibleAnimalsHash(){
-		try {
-			// creates a global factory
-			IGlobalFactory factory = ComponentContextFactory
-					.createGlobalFactory();
+		this.animals = new ArrayList<String>();
+		base = new BaseConhecimento();
+		listNames = base.listaNomes();
 
-			factory.registerPrototype(QuestionsHash.class);
+		if (inserted == false) {
+			try {
+				IGlobalFactory factory = ComponentContextFactory
+						.createGlobalFactory();
 
-			// instances the component based on its URI
-			hashAnswerYes = factory
-					.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
+				factory.registerPrototype(QuestionsHash.class);
 
-			hashAnswerNo = factory
-					.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
+				hashAnswerYes = factory
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 
-			hashAnswerDontKnow = factory
-					.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+				hashAnswerNo = factory
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
+
+				hashAnswerDontKnow = factory
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			listQuestions = new ArrayList<String>();
+
+			for (int i = 0; (i < listNames.length); i++) {
+				IObjetoConhecimento obj;
+				obj = base.recuperaObjeto(listNames[i]);
+				objs.put(listNames[i], obj);
+
+				IDeclaracao decl = obj.primeira();
+
+				while (decl != null) {
+					if (!listQuestions.contains(decl.getPropriedade())) {
+						insertAnswerHash(decl.getPropriedade());
+						listQuestions.add(decl.getPropriedade());
+					}
+					decl = obj.proxima();
+				}
+			}
+			inserted = true;
 		}	
 	}
 	
@@ -71,9 +106,9 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		List<String> mergeList = new ArrayList<String>();
 		int size;
 		
-		if (l1.isEmpty()) {
+		if (l1 == null || l1.isEmpty()) {
 			mergeList = l2;
-		} else if (l2.isEmpty()) {
+		} else if (l2 == null || l2.isEmpty()) {
 			mergeList = l1;
 		} else {
 			if(l1.size() > l2.size())
@@ -94,5 +129,25 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 			}
 		}
 		return mergeList;
+	}
+	
+	private void insertAnswerHash(String question) {
+		for (int i = 0; i < listNames.length; i++) {
+			IResponder responder = responders.get(listNames[i]);
+			if (responder == null) {
+				responder = new Responder(listNames[i]);
+				responders.put(listNames[i], responder);
+			}
+
+			String answer = responder.ask(question);
+
+			if (answer.equalsIgnoreCase("sim")) {
+				hashAnswerYes.putAnimal(question, listNames[i]);
+			} else if (answer.equalsIgnoreCase("nao")) {
+				hashAnswerNo.putAnimal(question, listNames[i]);
+			} else if (answer.equalsIgnoreCase("nao sei")) {
+				hashAnswerDontKnow.putAnimal(question, listNames[i]);
+			}
+		}
 	}
 }
