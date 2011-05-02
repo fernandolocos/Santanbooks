@@ -3,7 +3,6 @@ package pt.c03ensaios.fejao.app;
 import pt.c01interfaces.s01chaveid.s01base.impl.BaseConhecimento;
 import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
-import pt.c03ensaios.fejao.app.EnquirerAdvanced;
 import pt.c03ensaios.frango.appTest.Responder;
 
 public class AppBase01 {
