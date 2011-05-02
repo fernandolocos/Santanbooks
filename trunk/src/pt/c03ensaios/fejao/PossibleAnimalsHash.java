@@ -12,15 +12,16 @@ import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import pt.c03ensaios.frango.IQuestionsHash;
 import pt.c03ensaios.frango.QuestionsHash;
 import pt.c03ensaios.frango.appTest.Responder;
-
 import anima.annotation.Component;
+import anima.component.IRequires;
 import anima.component.base.ComponentBase;
 import anima.factory.IGlobalFactory;
 import anima.factory.context.componentContext.ComponentContextFactory;
 
 @Component(id = "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>", 
-		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" })
-public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash {
+		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" },
+        requires={"<http://purl.org/dcc/pt.c03ensaios.frangoIQuestionsHash>"})
+public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash, IRequires<IQuestionsHash>{
 	private List<String> animals;
 	private static IBaseConhecimento base;
 	private static String[] listNames;
@@ -31,7 +32,8 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	private static HashMap<String, IResponder> responders = new HashMap<String, IResponder>();
 	private static HashMap<String, IObjetoConhecimento> objs = new HashMap<String, IObjetoConhecimento>();
 	private static Boolean inserted = false;
-	
+	private static int currentHash = 0;
+
 	public PossibleAnimalsHash(){
 		this.animals = new ArrayList<String>();
 		base = new BaseConhecimento();
@@ -44,8 +46,8 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 
 				factory.registerPrototype(QuestionsHash.class);
 
-				hashAnswerYes = factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
+				hashAnswerYes = (factory
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>"));
 
 				hashAnswerNo = factory
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
@@ -58,23 +60,48 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 
 			listQuestions = new ArrayList<String>();
 
-			for (int i = 0; (i < listNames.length); i++) {
-				IObjetoConhecimento obj;
-				obj = base.recuperaObjeto(listNames[i]);
-				objs.put(listNames[i], obj);
-
-				IDeclaracao decl = obj.primeira();
-
-				while (decl != null) {
-					if (!listQuestions.contains(decl.getPropriedade())) {
-						insertAnswerHash(decl.getPropriedade());
-						listQuestions.add(decl.getPropriedade());
-					}
-					decl = obj.proxima();
-				}
-			}
+			insertAnimalsHash();
 			inserted = true;
-		}	
+		}
+	}
+	
+	public PossibleAnimalsHash(IQuestionsHash hashAnswerYes, IQuestionsHash hashAnswerNo, IQuestionsHash hashAnswerDontKnow){
+		this.animals = new ArrayList<String>();
+		base = new BaseConhecimento();
+		listNames = base.listaNomes();
+
+		if (inserted == false) {
+			try {
+				IGlobalFactory factory = ComponentContextFactory
+						.createGlobalFactory();
+
+				factory.registerPrototype(QuestionsHash.class);
+
+				connect(hashAnswerYes);
+				connect(hashAnswerNo);
+				connect(hashAnswerDontKnow);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			listQuestions = new ArrayList<String>();
+			insertAnimalsHash();
+			inserted = true;
+		}
+	}
+	
+	public void connect(IQuestionsHash hash){
+		switch(currentHash % 3){
+			case 0: PossibleAnimalsHash.hashAnswerYes = hash;
+					break;
+			case 1: PossibleAnimalsHash.hashAnswerNo = hash;
+					break;
+			case 2: PossibleAnimalsHash.hashAnswerDontKnow = hash;
+					break;
+			default: break;
+		}
+		currentHash++;
 	}
 	
 	public List<String> getPossibleAnimalsList() {
@@ -93,7 +120,7 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	}
 
 	public void DeterminesPossibleAnimals(String question, String answer) {		
-		if (answer.equalsIgnoreCase("sim")) {				
+		if (answer.equalsIgnoreCase("sim")) {
 				animals = mergeList(hashAnswerYes.getAnimals(question), animals);				
 		} else if (answer.equalsIgnoreCase("nao")) {
 				animals = mergeList(hashAnswerNo.getAnimals(question), animals);
@@ -131,6 +158,24 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		return mergeList;
 	}
 	
+	public void insertAnimalsHash(){
+		for (int i = 0; (i < listNames.length); i++) {
+			IObjetoConhecimento obj;
+			obj = base.recuperaObjeto(listNames[i]);
+			objs.put(listNames[i], obj);
+
+			IDeclaracao decl = obj.primeira();
+
+			while (decl != null) {
+				if (!listQuestions.contains(decl.getPropriedade())) {
+					insertAnswerHash(decl.getPropriedade());
+					listQuestions.add(decl.getPropriedade());
+				}
+				decl = obj.proxima();
+			}
+		}
+    }
+	
 	private void insertAnswerHash(String question) {
 		for (int i = 0; i < listNames.length; i++) {
 			IResponder responder = responders.get(listNames[i]);
@@ -150,4 +195,5 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 			}
 		}
 	}
+
 }
