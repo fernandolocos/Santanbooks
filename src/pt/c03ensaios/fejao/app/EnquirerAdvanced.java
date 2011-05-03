@@ -53,7 +53,7 @@ public class EnquirerAdvanced implements IEnquirer{
 			hashAnimais.DeterminesPossibleAnimals(listaPerguntas.get(i), resposta);
 			
 			// se hashAnimais = 1 retorna resultado
-			if (hashAnimais.getListSize() == 1) {
+			if (hashAnimais.getNumberOfAnimals() == 1) {
 				nomeAnimal = hashAnimais.getPossibleAnimalsList().get(0);
 				encontrado = true;
 			}

@@ -20,7 +20,7 @@ import anima.factory.context.componentContext.ComponentContextFactory;
 
 @Component(id = "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>", 
 		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" },
-        requires={"<http://purl.org/dcc/pt.c03ensaios.frangoIQuestionsHash>"})
+        requires={"<http://purl.org/dcc/pt.c03ensaios.frango.IQuestionsHash>"})
 public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash, IRequires<IQuestionsHash>{
 	private List<String> animals;
 	private static IBaseConhecimento base;
@@ -33,7 +33,11 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	private static HashMap<String, IObjetoConhecimento> objs = new HashMap<String, IObjetoConhecimento>();
 	private static Boolean inserted = false;
 	private static int currentHash = 0;
-
+	
+	/**
+	 * Class constructor. Instantiates 3 objects of the type QuestionsHash and
+	 * initializes them.
+	 */
 	public PossibleAnimalsHash(){
 		this.animals = new ArrayList<String>();
 		base = new BaseConhecimento();
@@ -43,15 +47,11 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 			try {
 				IGlobalFactory factory = ComponentContextFactory
 						.createGlobalFactory();
-
 				factory.registerPrototype(QuestionsHash.class);
-
 				hashAnswerYes = (factory
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>"));
-
 				hashAnswerNo = factory
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
-
 				hashAnswerDontKnow = factory
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 			} catch (Exception e) {
@@ -65,7 +65,15 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		}
 	}
 	
-	public PossibleAnimalsHash(IQuestionsHash hashAnswerYes, IQuestionsHash hashAnswerNo, IQuestionsHash hashAnswerDontKnow){
+	/**
+	 * Alternative class constructor. Receives 3 objects of the type QuestionsHash and connects them.
+	 * 
+	 * @param hashAnswerYes IQuestionsHash object which contains questions and animals whose answers are "Yes".
+	 * @param hashAnswerNo IQuestionsHash object which contains questions and animals whose answers are "No".
+	 * @param hashAnswerDontKnow IQuestionsHash object which contains questions and animals whose answers are "Don't Know".
+	 */
+	public PossibleAnimalsHash(IQuestionsHash hashAnswerYes, 
+			IQuestionsHash hashAnswerNo, IQuestionsHash hashAnswerDontKnow){
 		this.animals = new ArrayList<String>();
 		base = new BaseConhecimento();
 		listNames = base.listaNomes();
@@ -86,11 +94,18 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 			}
 
 			listQuestions = new ArrayList<String>();
-			insertAnimalsHash();
 			inserted = true;
 		}
 	}
 	
+	/**
+	 * Connects an IQuestionHash object and sets it to the local arguments.
+	 * The first time it is called, connects the hash of answers "Yes". Iterates internally and the next two times
+	 * it is called, connects the hash of answers "No" and the hash of answers "Don't Know", respectively. If called after
+	 * hash of answers "Don't Know" is already connected, restarts the process, from the hash of answers "Yes".
+	 * 
+	 * @param hash IQuestionsHash object to be connected.
+	 */
 	public void connect(IQuestionsHash hash){
 		switch(currentHash % 3){
 			case 0: PossibleAnimalsHash.hashAnswerYes = hash;
@@ -104,21 +119,131 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		currentHash++;
 	}
 	
+	/**
+	 * @return IQuestionsHash object containing questions and the animals whose answers
+	 * to these questions are "Yes"
+	 */
+	public IQuestionsHash getQuestionsHashYes(){
+		return hashAnswerYes;
+	}
+	
+	/**
+	 * @return IQuestionsHash object containing questions and the animals whose answers
+	 * to these questions are "No"
+	 */
+	public IQuestionsHash getQuestionsHashNo(){
+		return hashAnswerNo;
+	}
+	
+	/**
+	 * @return IQuestionsHash object containing questions and the animals whose answers
+	 * to these questions are "Don't Know"
+	 */
+	public IQuestionsHash getQuestionsHashDontKnow(){
+		return hashAnswerDontKnow;
+	}
+	
+	/**
+     * Get a list of possible animals in the hash 
+     * @return list of Strings, containing the names of the possible animals 
+     */
 	public List<String> getPossibleAnimalsList() {
 		return animals;
 	}
+	
+	/**
+     * Get an array of possible animals in the hash 
+     * @return array of Strings, containing the names of the possible animals 
+     */
+	public String[] getPossibleAnimalsArray() {
+		return (String[])animals.toArray();
+	}
 
-	public void putPossibleAnimalsList(List<String> animals) {
+	/**
+     * Sets a new list of possible animals
+     * @param animals list of Strings, containing names of animals
+     */
+	public void setPossibleAnimalsList(List<String> animals) {
 		this.animals = animals;
 	}
-
-	public int getListSize() {
-		int tamanho = 0;
-		if(animals != null)
-			tamanho = animals.size();
-		return tamanho;
+	
+	/**
+     * Sets a new list of possible animals
+     * @param animals array of Strings, containing names of animals
+     */
+	public void setPossibleAnimalsArray(String[] animals) {
+		clearPossibleAnimalsList();
+		for(int i = 0; i < animals.length; i++){
+			this.animals.add(animals[i]);			
+		}
+	}
+	
+	/**
+	 * Resets the list of possible animals, so that all animals in the QuestionHashes
+	 * become possible again.
+	 */
+	public void clearPossibleAnimalsList(){
+		this.animals = new ArrayList<String>();
 	}
 
+	/**
+     * Adds new animals to the list of possible animals, preserving the current animals
+     * @param animals list of Strings, containing names of animals
+     */
+	public void addAnimalsList(List<String> animals){
+		addAnimalsArray((String[])animals.toArray());
+	}
+	
+	/**
+     * Adds new animals to the list of possible animals, preserving the current animals
+     * @param animals array of Strings, containing names of animals
+     */
+	public void addAnimalsArray(String[] animals){
+		for(int i = 0; i < animals.length; i++){
+			if(!this.animals.contains(animals[i])) 
+				this.animals.add(animals[i]);
+		}
+	}
+	
+	/**
+     * Removes animals from the list of possible animals, if animals received exist
+     * @param animals list of Strings, containing names of animals
+     */
+	public void removeAnimalsList(List<String> animals){
+		removeAnimalsArray((String[])animals.toArray());
+	}
+	
+	/**
+     * Removes animals from the list of possible animals, if animals received exist
+     * @param animals array of Strings, containing names of animals
+     */
+	public void removeAnimalsArray(String[] animals){
+		for(int i = 0; i < animals.length; i++){
+			if(this.animals.contains(animals[i])) 
+				this.animals.remove(animals[i]);
+		}
+	}
+	
+	/**
+     * Gets the size of the list of possible animals, 
+     * which is the number of possible animals.
+     *  
+     * @return number of animals. 
+     */
+	public int getNumberOfAnimals() {
+		int size = 0;
+		if(animals != null)
+			size = animals.size();
+		return size;
+	}
+
+	/**
+     * Determines the possible animals that are previously possible and which also answers 
+     * the question received with the same answer received by parameter.
+     * 
+     * @param question String of the question asked 
+     * @param answer String of the answer given to the question
+     */
 	public void DeterminesPossibleAnimals(String question, String answer) {		
 		if (answer.equalsIgnoreCase("sim")) {
 				animals = mergeList(hashAnswerYes.getAnimals(question), animals);				
@@ -129,6 +254,13 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		}
 	}
 	
+	/**
+	 * Receives two lists of Strings, and returns the items that both lists contain
+	 * 
+	 * @param l1 list of Strings
+	 * @param l2 list of Strings
+	 * @return list of Strings containing the l1 and l2 merged
+	 */
 	private List<String> mergeList(List<String> l1, List<String> l2){
 		List<String> mergeList = new ArrayList<String>();
 		int size;
@@ -158,7 +290,10 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		return mergeList;
 	}
 	
-	public void insertAnimalsHash(){
+	/**
+	 * Inserts the animals to the 3 hashes of answers, from the knowledge base.
+	 */
+	private void insertAnimalsHash(){
 		for (int i = 0; (i < listNames.length); i++) {
 			IObjetoConhecimento obj;
 			obj = base.recuperaObjeto(listNames[i]);
@@ -176,6 +311,10 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		}
     }
 	
+	/**
+	 * Inserts the questions and properties of the animals in the 3 hashes of answers,
+	 * according to the properties of the animals. 
+	 */
 	private void insertAnswerHash(String question) {
 		for (int i = 0; i < listNames.length; i++) {
 			IResponder responder = responders.get(listNames[i]);
