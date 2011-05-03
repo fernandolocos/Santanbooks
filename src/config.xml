@@ -2,6 +2,6 @@
 <config>
     <dccs>
         <dcc mainModule="pt.c03ensaios.frango.QuestionsHash"/>   
-        <dcc mainModule="pt.c03ensaios.fejao.PossibleAnimalsHash"/>     
+        <dcc mainModule="pt.c03ensaios.fejao.PossibleAnimalsHash"/>   
     </dccs>
 </config>
