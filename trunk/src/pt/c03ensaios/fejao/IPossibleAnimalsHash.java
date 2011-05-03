@@ -8,7 +8,8 @@ import anima.annotation.ComponentInterface;
 import anima.component.ISupports;
 
 /**
- * Interface responsible for the control of animals still have a chance to be the animal sought
+ * Interface responsible for determining the possible animals, according to questions answered 
+ * by some Responder, and refines the animals each time one question is answered
  * @author Fernando Costa e João Scalett
  */
 @ComponentInterface("<http://purl.org/dcc/pt.c03ensaios.fejao.IPossibleAnimals>")
