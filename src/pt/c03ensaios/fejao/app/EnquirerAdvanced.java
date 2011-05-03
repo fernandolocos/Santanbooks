@@ -50,7 +50,7 @@ public class EnquirerAdvanced implements IEnquirer{
 			String resposta = responder.ask((String) listaPerguntas.get(i));
 
 			// determina uma nova lista de possiveis animais
-			hashAnimais.DeterminesPossibleAnimals(listaPerguntas.get(i), resposta);
+			hashAnimais.determinesPossibleAnimals(listaPerguntas.get(i), resposta);
 			
 			// se hashAnimais = 1 retorna resultado
 			if (hashAnimais.getNumberOfAnimals() == 1) {

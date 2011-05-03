@@ -43,16 +43,15 @@ public interface IPossibleAnimalsHash extends ISupports{
 	public IQuestionsHash getQuestionsHashDontKnow();
 	
 	/**
-     * Get a list of possible animals in the hash 
+     * Gets a list of possible animals in the hash 
      * @return list of Strings, containing the names of the possible animals 
      */
 	public List<String> getPossibleAnimalsList();
 	
 	/**
-     * Get an array of possible animals in the hash 
+     * Gets an array of possible animals in the hash 
      * @return array of Strings, containing the names of the possible animals 
      */
-	
 	public String[] getPossibleAnimalsArray();
 	
 	/**
@@ -112,5 +111,5 @@ public interface IPossibleAnimalsHash extends ISupports{
      * @param question String of the question asked 
      * @param answer String of the answer given to the question
      */
-	public void DeterminesPossibleAnimals(String question, String answer);
+	public void determinesPossibleAnimals(String question, String answer);
 }

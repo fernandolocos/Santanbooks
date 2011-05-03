@@ -102,7 +102,7 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	 * Connects an IQuestionHash object and sets it to the local arguments.
 	 * The first time it is called, connects the hash of answers "Yes". Iterates internally and the next two times
 	 * it is called, connects the hash of answers "No" and the hash of answers "Don't Know", respectively. If called after
-	 * hash of answers "Don't Know" is already connected, restarts the process, from the hash of answers "Yes".
+	 * hash of answers "Don't Know" has been already connected, restarts the process, from the hash of answers "Yes".
 	 * 
 	 * @param hash IQuestionsHash object to be connected.
 	 */
@@ -244,7 +244,7 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
      * @param question String of the question asked 
      * @param answer String of the answer given to the question
      */
-	public void DeterminesPossibleAnimals(String question, String answer) {		
+	public void determinesPossibleAnimals(String question, String answer) {		
 		if (answer.equalsIgnoreCase("sim")) {
 				animals = mergeList(hashAnswerYes.getAnimals(question), animals);				
 		} else if (answer.equalsIgnoreCase("nao")) {
