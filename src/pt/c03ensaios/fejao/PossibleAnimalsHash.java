@@ -12,6 +12,7 @@ import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import pt.c03ensaios.frango.IQuestionsHash;
 import pt.c03ensaios.frango.QuestionsHash;
 import pt.c03ensaios.frango.appTest.Responder;
+import pt.c03ensaios.linnaeus.IAnimalsDatabase;
 import anima.annotation.Component;
 import anima.component.base.ComponentBase;
 import anima.factory.IGlobalFactory;
@@ -19,11 +20,13 @@ import anima.factory.context.componentContext.ComponentContextFactory;
 
 @Component(id = "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>", 
 		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" },
-        requires={"<http://purl.org/dcc/pt.c03ensaios.frango.IQuestionsHash>"})
-public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash, IRecptacleQuestionsHash{
+        requires={"<http://purl.org/dcc/pt.c03ensaios.frango.IQuestionsHash>"}, 
+        		"<http://purl.org/dcc/pt.c03ensaios.linnaeus.IAnimalDatabase>"})
+public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash, IRecptacleQuestionsHash, IReceptacleAnimalsDatabase{
 	private List<String> animals;
-	private static IBaseConhecimento base;
-	private static String[] listNames;
+	private static IAnimalsDatabase base;
+	//private static IBaseConhecimento base;
+	//private static String[] listNames;
 	private static IQuestionsHash hashAnswerYes;
 	private static IQuestionsHash hashAnswerNo;
 	private static IQuestionsHash hashAnswerDontKnow;
@@ -39,8 +42,8 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	 */
 	public PossibleAnimalsHash(){
 		this.animals = new ArrayList<String>();
-		base = new BaseConhecimento();
-		listNames = base.listaNomes();
+		//base = new BaseConhecimento();
+		//listNames = base.listaNomes();
 
 		if (inserted == false) {
 			try {
@@ -53,6 +56,8 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 				hashAnswerDontKnow = factory
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
+				base = factory
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.linnaeus.IAnimalDatabase>");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -74,8 +79,8 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	public PossibleAnimalsHash(IQuestionsHash hashAnswerYes, 
 			IQuestionsHash hashAnswerNo, IQuestionsHash hashAnswerDontKnow){
 		this.animals = new ArrayList<String>();
-		base = new BaseConhecimento();
-		listNames = base.listaNomes();
+		//base = new BaseConhecimento();
+		//listNames = base.listaNomes();
 
 		if (inserted == false) {
 			try {
@@ -87,6 +92,9 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 				connect(hashAnswerYes);
 				connect(hashAnswerNo);
 				connect(hashAnswerDontKnow);
+				
+				base = factory
+				.createInstance("<http://purl.org/dcc/pt.c03ensaios.linnaeus.IAnimalDatabase>");
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -116,6 +124,16 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 			default: break;
 		}
 		currentHash++;
+	}
+
+	/**
+	 * Connects an IAnimalsDatabase object and sets it to the local arguments.
+	 * Method that connects the base of the interface IAnimalsDatabase.
+	 * 
+	 * @param base IAnimalsDatabase object to be connected.
+	 */
+	public void connect(IAnimalsDatabase base) {
+		PossibleAnimalsHash.base = base;	
 	}
 	
 	/**
@@ -293,7 +311,7 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	 * Inserts the animals to the 3 hashes of answers, from the knowledge base.
 	 */
 	private void insertAnimalsHash(){
-		for (int i = 0; (i < listNames.length); i++) {
+		for (int i = 0; (i < listNames.lenght); i++) {
 			IObjetoConhecimento obj;
 			obj = base.recuperaObjeto(listNames[i]);
 			objs.put(listNames[i], obj);
@@ -333,5 +351,4 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 			}
 		}
 	}
-
 }
