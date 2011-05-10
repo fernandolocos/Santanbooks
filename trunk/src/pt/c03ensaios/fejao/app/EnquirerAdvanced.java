@@ -11,8 +11,7 @@ import pt.c01interfaces.s01chaveid.s01base.inter.IObjetoConhecimento;
 import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import pt.c03ensaios.fejao.IPossibleAnimalsHash;
 import pt.c03ensaios.fejao.PossibleAnimalsHash;
-//import pt.c03ensaios.frango.IQuestionsHash;
-//import anima.annotation.Component;
+import pt.c03ensaios.frango.IQuestionsHash;
 import anima.component.IRequires;
 import anima.component.base.ComponentBase;
 import anima.factory.IGlobalFactory;
@@ -62,11 +61,14 @@ public class EnquirerAdvanced extends ComponentBase implements IEnquirer, IRequi
 	            factory.registerPrototype(PossibleAnimalsHash.class);
 //	            factory.registerPrototype(IQuestionsHash.class);
 //	            
-//	            IQuestionsHash hashQuestions = factory.createInstance(
-//	                      "<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
+	            IQuestionsHash hashQuestions = factory.createInstance(
+	                      "<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 	            
 	            hashAnimals = factory.createInstance(
 	                      "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>");
+	            
+	            hashAnimals.queryReceptacle(
+	            		"<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>");
 	
 	        } catch (Exception e) {
 	            e.printStackTrace();

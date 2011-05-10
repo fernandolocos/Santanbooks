@@ -13,7 +13,6 @@ import pt.c03ensaios.frango.IQuestionsHash;
 import pt.c03ensaios.frango.QuestionsHash;
 import pt.c03ensaios.frango.appTest.Responder;
 import anima.annotation.Component;
-import anima.component.IRequires;
 import anima.component.base.ComponentBase;
 import anima.factory.IGlobalFactory;
 import anima.factory.context.componentContext.ComponentContextFactory;
@@ -21,7 +20,7 @@ import anima.factory.context.componentContext.ComponentContextFactory;
 @Component(id = "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>", 
 		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" },
         requires={"<http://purl.org/dcc/pt.c03ensaios.frango.IQuestionsHash>"})
-public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash, IRequires<IQuestionsHash>{
+public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash, IRecptacleQuestionsHash{
 	private List<String> animals;
 	private static IBaseConhecimento base;
 	private static String[] listNames;
