@@ -12,16 +12,16 @@ import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import pt.c03ensaios.frango.IQuestionsHash;
 import pt.c03ensaios.frango.QuestionsHash;
 import pt.c03ensaios.frango.appTest.Responder;
+import pt.c03ensaios.linnaeus.IAnimalData;
 import pt.c03ensaios.linnaeus.IAnimalsDatabase;
+import pt.c03ensaios.linnaeus.AnimalsDatabase;
 import anima.annotation.Component;
 import anima.component.base.ComponentBase;
 import anima.factory.IGlobalFactory;
 import anima.factory.context.componentContext.ComponentContextFactory;
 
 @Component(id = "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>", 
-		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" },
-        requires={"<http://purl.org/dcc/pt.c03ensaios.frango.IQuestionsHash>"}, 
-        		"<http://purl.org/dcc/pt.c03ensaios.linnaeus.IAnimalDatabase>"})
+		provides = { "<http://purl.org/dcc/pt.c03ensaiosfoundations.fejao.IPossibleAnimalsHash>" })
 public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnimalsHash, IRecptacleQuestionsHash, IReceptacleAnimalsDatabase{
 	private List<String> animals;
 	private static IAnimalsDatabase base;
@@ -57,7 +57,7 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 				hashAnswerDontKnow = factory
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 				base = factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.linnaeus.IAnimalDatabase>");
+						.createInstance("<http://purl.org/dcc/pt.c03ensaios.linnaeus.AnimalDatabase>");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -311,44 +311,19 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 	 * Inserts the animals to the 3 hashes of answers, from the knowledge base.
 	 */
 	private void insertAnimalsHash(){
-		for (int i = 0; (i < listNames.lenght); i++) {
-			IObjetoConhecimento obj;
-			obj = base.recuperaObjeto(listNames[i]);
-			objs.put(listNames[i], obj);
+		IAnimalsDatabase animais = new AnimalsDatabase();
+        for (String question : animais.getPerguntas()) {
+            for (IAnimalData animal : animais.getAnimais()) {
+                String answer = animal.getResposta(question);
 
-			IDeclaracao decl = obj.primeira();
-
-			while (decl != null) {
-				if (!listQuestions.contains(decl.getPropriedade())) {
-					insertAnswerHash(decl.getPropriedade());
-					listQuestions.add(decl.getPropriedade());
-				}
-				decl = obj.proxima();
-			}
-		}
-    }
-	
-	/**
-	 * Inserts the questions and properties of the animals in the 3 hashes of answers,
-	 * according to the properties of the animals. 
-	 */
-	private void insertAnswerHash(String question) {
-		for (int i = 0; i < listNames.length; i++) {
-			IResponder responder = responders.get(listNames[i]);
-			if (responder == null) {
-				responder = new Responder(listNames[i]);
-				responders.put(listNames[i], responder);
-			}
-
-			String answer = responder.ask(question);
-
-			if (answer.equalsIgnoreCase("sim")) {
-				hashAnswerYes.putAnimal(question, listNames[i]);
-			} else if (answer.equalsIgnoreCase("nao")) {
-				hashAnswerNo.putAnimal(question, listNames[i]);
-			} else if (answer.equalsIgnoreCase("nao sei")) {
-				hashAnswerDontKnow.putAnimal(question, listNames[i]);
-			}
-		}
+                if (answer.equalsIgnoreCase("sim")) {
+                    hashAnswerYes.putAnimal(question, animal.getNome());
+                } else if (answer.equalsIgnoreCase("nao")) {
+                    hashAnswerNo.putAnimal(question, animal.getNome());
+                } else if (answer.equalsIgnoreCase("nao sei")) {
+                    hashAnswerDontKnow.putAnimal(question, animal.getNome());
+                }
+            }
+        }
 	}
 }

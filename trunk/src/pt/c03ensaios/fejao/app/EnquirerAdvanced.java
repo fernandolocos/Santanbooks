@@ -61,8 +61,6 @@ public class EnquirerAdvanced extends ComponentBase implements IEnquirer, IRequi
 	            factory.registerPrototype(PossibleAnimalsHash.class);
 //	            factory.registerPrototype(IQuestionsHash.class);
 //	            
-	            IQuestionsHash hashQuestions = factory.createInstance(
-	                      "<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 	            
 	            hashAnimals = factory.createInstance(
 	                      "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>");
@@ -78,10 +76,10 @@ public class EnquirerAdvanced extends ComponentBase implements IEnquirer, IRequi
 		hashAnimals.clearPossibleAnimalsList();
 		
 		// utiliza a lista de perguntas que foi montada anteriormente e vai
-		// perguntando até os animais possiveis para a resposta seja somente 1
+		// perguntando atï¿½ os animais possiveis para a resposta seja somente 1
 		for (int i = 0; ((i < listaPerguntas.size()) && (!encontrado)); i++){
 			/*este exemplo vai no brutal force. Fazendo todas as perguntas.
-			 * O ideal seria utilizar um método que escolha a melhor pergunta.
+			 * O ideal seria utilizar um mï¿½todo que escolha a melhor pergunta.
 			 * Fizemos assm apenas para exemplificar o uso.*/
 			String resposta = responder.ask((String)listaPerguntas.get(i));
 

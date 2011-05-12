@@ -10,12 +10,14 @@ import java.util.Vector;
 import anima.annotation.Component;
 import anima.component.base.ComponentBase;
 import pt.c03ensaios.debolacha.inter.IAnimalFile;
+import pt.c03ensaios.linnaeus.IAnimalData;
+import pt.c03ensaios.linnaeus.IAnimalsDatabase;
 import pt.c03ensaios.tochinhas2.impl.*;
 
 /**
- * Stores an animal’s data in a hashtable and write it in the database.
+ * Stores an animalï¿½s data in a hashtable and write it in the database.
  * 
- * @author José Américo Nabuco Leva Ferreira de Freitas
+ * @author Josï¿½ Amï¿½rico Nabuco Leva Ferreira de Freitas
  */
 @Component(id="<http://purl.org/dcc/pt.c03ensaios.debolacha.impl.AnimalFile>",
 		   provides = {"<http://purl.org/dcc/pt.c03ensaios.debolacha.inter.IAnimalFile>"})
@@ -37,7 +39,7 @@ public class AnimalFile extends ComponentBase implements IAnimalFile {
 	/**
 	 * Adds a property and its value in a hashtable.
 	 * @param property: Animal's property.
-	 * @param value: Property’s value.
+	 * @param value: Propertyï¿½s value.
 	 */
 	@Override
 	public void addProperty(String property, String value) {
@@ -54,7 +56,7 @@ public class AnimalFile extends ComponentBase implements IAnimalFile {
 	
 	/**
 	 * Creates a .txt file and store it in the base folder.
-	 * @param value: Base’s relative address from the binary file.
+	 * @param value: Baseï¿½s relative address from the binary file.
 	 */
 	@Override
 	public void baseInsert() {
@@ -185,6 +187,5 @@ public class AnimalFile extends ComponentBase implements IAnimalFile {
 			return true;
 		
 		return false;
-	}
-	
+	}	
 }
