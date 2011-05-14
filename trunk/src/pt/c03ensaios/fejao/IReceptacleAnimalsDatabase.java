@@ -6,5 +6,5 @@ import anima.component.IReceptacle;
 
 @ComponentInterface("<http://purl.org/dcc/pt.c03ensaios.fejao.IReceptacleAnimalsDatabase>")
 public interface IReceptacleAnimalsDatabase extends IReceptacle{
-	public void connect(IAnimalsDatabase base);
+	public void connect(IAnimalsDatabase AnimalsDatabase);
 }
