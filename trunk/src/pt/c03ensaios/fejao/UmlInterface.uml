@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_kmlckH3GEeCRV6kOMm7haA" name="UmlInterface">
+  <elementImport xmi:id="_kn6SQH3GEeCRV6kOMm7haA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_kn6SQX3GEeCRV6kOMm7haA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_kn65UH3GEeCRV6kOMm7haA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_kn65UX3GEeCRV6kOMm7haA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_oGDNEH3GEeCRV6kOMm7haA" name="Interface"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_tCVg4H3GEeCRV6kOMm7haA" name="IPossibleAnimalsHash">
+    <ownedOperation xmi:id="_zQZloH3GEeCRV6kOMm7haA" name="getQuestionsHashYes">
+      <ownedParameter xmi:id="_GQmgIH3HEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_HXxjkH3HEeCRV6kOMm7haA" name="getQuestionsHashNo">
+      <ownedParameter xmi:id="_KkRUwH3HEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_HaNzkH3HEeCRV6kOMm7haA" name="getQuestionsHashDontKnow">
+      <ownedParameter xmi:id="_NGQJUH3HEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_P5lMkH3HEeCRV6kOMm7haA" name="getPossibleAnimalsList">
+      <ownedParameter xmi:id="_RF0WMH3HEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Rf97kH3HEeCRV6kOMm7haA" name="getPossibleAnimalsArray">
+      <ownedParameter xmi:id="_SvS1cH3HEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_U7dLAH3HEeCRV6kOMm7haA" name="setPossibleAnimalsList">
+      <ownedParameter xmi:id="_xNO-kH3HEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_xNO-kX3HEeCRV6kOMm7haA" name="List"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_61sGkH3HEeCRV6kOMm7haA" name="setPossibleAnimalsArray">
+      <ownedParameter xmi:id="__T9osH3HEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="__T9osX3HEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_DvIzgH3IEeCRV6kOMm7haA" name="clearPossibleAnimalsList">
+      <ownedParameter xmi:id="_E_UB8H3IEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_HNZDEH3IEeCRV6kOMm7haA" name="addAnimalsList">
+      <ownedParameter xmi:id="_MYw7wH3IEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_MYw7wX3IEeCRV6kOMm7haA" name="List"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_PrdbkH3IEeCRV6kOMm7haA" name="addAnimalsArray">
+      <ownedParameter xmi:id="_TOju4H3IEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_TOkV8H3IEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_WuDUkH3IEeCRV6kOMm7haA" name="removeAnimalsList">
+      <ownedParameter xmi:id="_aDEIkH3IEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_aDEvoH3IEeCRV6kOMm7haA" name="List"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_cWAbkH3IEeCRV6kOMm7haA" name="removeAnimalsArray">
+      <ownedParameter xmi:id="_dcGg8H3IEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_dcHIAH3IEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_e2_KkH3IEeCRV6kOMm7haA" name="getNumberOfAnimals">
+      <ownedParameter xmi:id="_fVWhkH3IEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hGuYkH3IEeCRV6kOMm7haA" name="determinesPossibleAnimals">
+      <ownedParameter xmi:id="_jDm8AH3IEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_jDnjEH3IEeCRV6kOMm7haA" name="String"/>
+      <ownedParameter xmi:id="_jDnjEX3IEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_J3vzsH3MEeCRV6kOMm7haA" name="PossibleAnimalsHash">
+    <generalization xmi:id="_7dc34H3MEeCRV6kOMm7haA" general="_tCVg4H3GEeCRV6kOMm7haA"/>
+    <ownedOperation xmi:id="_MoWTEH3MEeCRV6kOMm7haA" name="getQuestionHashYes">
+      <ownedParameter xmi:id="_PRGeAH3MEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_PtpQEH3MEeCRV6kOMm7haA" name="getQuestionHashNo">
+      <ownedParameter xmi:id="_STyL4H3MEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_S0JuAH3MEeCRV6kOMm7haA" name="getQuestionHashdontKnow">
+      <ownedParameter xmi:id="_UMkScH3MEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_U5-yEH3MEeCRV6kOMm7haA" name="getPossibleAnimalList">
+      <ownedParameter xmi:id="_X4SWQH3MEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_YPANIH3MEeCRV6kOMm7haA" name="getPossibleAnimalArray">
+      <ownedParameter xmi:id="_ZcOOMH3MEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_Z-6rkH3MEeCRV6kOMm7haA" name="setPossibleAnimalList">
+      <ownedParameter xmi:id="_ceu88H3MEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_ceu88X3MEeCRV6kOMm7haA" name="List"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_dR3qEH3MEeCRV6kOMm7haA" name="setPossibleAnimalarray">
+      <ownedParameter xmi:id="_fdbisH3MEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_fdcJwH3MEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_giOnkH3MEeCRV6kOMm7haA" name="clearPossibleAnimalList">
+      <ownedParameter xmi:id="_iPFyAH3MEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_imSxEH3MEeCRV6kOMm7haA" name="addAnimalsList">
+      <ownedParameter xmi:id="_qtilAH3MEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_qtjMEH3MEeCRV6kOMm7haA" name="List"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_kx_MkH3MEeCRV6kOMm7haA" name="addAnimalsArray">
+      <ownedParameter xmi:id="_r6hVgH3MEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_r6h8kH3MEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_mbHtkH3MEeCRV6kOMm7haA" name="removeAnimalsList">
+      <ownedParameter xmi:id="_pcGLQH3MEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_pcGyUH3MEeCRV6kOMm7haA" name="List"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_s1vAkH3MEeCRV6kOMm7haA" name="removeAnimalsArray">
+      <ownedParameter xmi:id="_vOxUgH3MEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_vOx7kH3MEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_wC0AkH3MEeCRV6kOMm7haA" name="getNumbersOfAnimals">
+      <ownedParameter xmi:id="_zNBSwH3MEeCRV6kOMm7haA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_zqq4EH3MEeCRV6kOMm7haA" name="determinespossibleAnimals">
+      <ownedParameter xmi:id="_2qF2kH3MEeCRV6kOMm7haA" direction="return"/>
+      <ownedParameter xmi:id="_2qF2kX3MEeCRV6kOMm7haA" name="String"/>
+      <ownedParameter xmi:id="_2qGdoH3MEeCRV6kOMm7haA" name="String"/>
+    </ownedOperation>
+  </packagedElement>
+</uml:Package>

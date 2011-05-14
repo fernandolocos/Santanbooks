@@ -4,7 +4,7 @@ import pt.c01interfaces.s01chaveid.s01base.impl.BaseConhecimento;
 import pt.c01interfaces.s01chaveid.s01base.inter.IBaseConhecimento;
 import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
-import pt.c03ensaios.frango.appTest.Responder;
+import pt.c03ensaios.frango.app.Responder;
 
 public class AppBase01 {
 
@@ -21,6 +21,4 @@ public class AppBase01 {
             ea.connect(ra);
         }	
 	}
-
-
 }

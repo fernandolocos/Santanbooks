@@ -1,9 +1,7 @@
 package pt.c03ensaios.fejao;
 
 import java.util.List;
-
 import pt.c03ensaios.frango.IQuestionsHash;
-
 import anima.annotation.ComponentInterface;
 import anima.component.ISupports;
 
@@ -14,16 +12,6 @@ import anima.component.ISupports;
  */
 @ComponentInterface("<http://purl.org/dcc/pt.c03ensaios.fejao.IPossibleAnimals>")
 public interface IPossibleAnimalsHash extends ISupports{
-
-	/**
-	 * Connects an IQuestionHash object and sets it to the local arguments.
-	 * The first time it is called, connects the hash of answers "Yes". Iterates internally and the next two times
-	 * it is called, connects the hash of answers "No" and the hash of answers "Don't Know", respectively. If called after
-	 * hash of answers "Don't Know" is already connected, restarts the process, from the hash of answers "Yes".
-	 * 
-	 * @param hash IQuestionsHash object to be connected.
-	 */
-	public void connect(IQuestionsHash hash);
 	
 	/**
 	 * @return IQuestionsHash object containing questions and the animals whose answers

@@ -54,7 +54,7 @@ public class EnquirerAdvanced extends ComponentBase implements IEnquirer, IRequi
 		boolean acertei, encontrado = false;
 		String nomeAnimal = null;
 		if(hashAnimals == null){
-			try {
+			/*try {
 	            IGlobalFactory factory = 
 	                ComponentContextFactory.createGlobalFactory();
 	            
@@ -70,7 +70,8 @@ public class EnquirerAdvanced extends ComponentBase implements IEnquirer, IRequi
 	
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	        }
+	        }*/
+			hashAnimals = new PossibleAnimalsHash();
 		}
         
 		hashAnimals.clearPossibleAnimalsList();
