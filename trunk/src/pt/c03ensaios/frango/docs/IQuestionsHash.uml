@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_9o7R8X3BEeC2t8I_QO0pIA" name="IQuestionsHash">
+  <elementImport xmi:id="_9rbzYH3BEeC2t8I_QO0pIA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_9rrrAH3BEeC2t8I_QO0pIA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_9rsSEH3BEeC2t8I_QO0pIA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_9rsSEX3BEeC2t8I_QO0pIA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_J-2FwH3CEeC2t8I_QO0pIA" name="IQuestionsHash">
+    <ownedOperation xmi:id="_Ms3LMH3CEeC2t8I_QO0pIA" name="getAnimals">
+      <ownedParameter xmi:id="_pR_GoH3EEeC2t8I_QO0pIA" name="questions">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_wJHocH3CEeC2t8I_QO0pIA" name="putAnimal">
+      <ownedParameter xmi:id="_04ndcH3CEeC2t8I_QO0pIA" direction="return"/>
+      <ownedParameter xmi:id="_04ndcX3CEeC2t8I_QO0pIA" name="question">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_04oEgH3CEeC2t8I_QO0pIA" name="animal">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_wOkJIH3CEeC2t8I_QO0pIA" name="removeAnimals">
+      <ownedParameter xmi:id="_eM6PoH3EEeC2t8I_QO0pIA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_eM6PoX3EEeC2t8I_QO0pIA" name="question">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_eM6Pon3EEeC2t8I_QO0pIA" name="animal">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_wV78cH3CEeC2t8I_QO0pIA" name="getQuestions">
+      <ownedParameter xmi:id="_9iyYQH3CEeC2t8I_QO0pIA" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_wdTvwH3CEeC2t8I_QO0pIA" name="getNumberOfQuestions">
+      <ownedParameter xmi:id="_NKBWYH3EEeC2t8I_QO0pIA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:id="_wi-58H3CEeC2t8I_QO0pIA" name="getArrayAnimals">
+      <ownedParameter xmi:id="_bobWIH3DEeC2t8I_QO0pIA" direction="return"/>
+      <ownedParameter xmi:id="_bobWIX3DEeC2t8I_QO0pIA" name="question">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+</uml:Package>
