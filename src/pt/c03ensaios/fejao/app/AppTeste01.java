@@ -6,12 +6,12 @@ import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
 import pt.c03ensaios.frango.app.Responder;
 
-public class AppBase01 {
+public class AppTeste01 {
 
 	public static void main(String[] args) {
 
         IBaseConhecimento bc = new BaseConhecimento();
-        String listaNomes[] = bc.listaNomes();
+        String[] listaNomes = bc.listaNomes();
         
         IEnquirer ea = new EnquirerAdvanced();
         IResponder ra;

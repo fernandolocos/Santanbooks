@@ -9,9 +9,17 @@ import pt.c01interfaces.s01chaveid.s01base.inter.IDeclaracao;
 import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01chaveid.s01base.inter.IObjetoConhecimento;
 import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
+import pt.c03ensaios.debolacha.impl.AnimalList;
+import pt.c03ensaios.debolacha.inter.IAnimalList;
 import pt.c03ensaios.fejao.IPossibleAnimalsHash;
+import pt.c03ensaios.fejao.IReceptacleAnimalList;
+import pt.c03ensaios.fejao.IReceptacleAnimalsDatabase;
+import pt.c03ensaios.fejao.IReceptacleQuestions;
 import pt.c03ensaios.fejao.PossibleAnimalsHash;
-import pt.c03ensaios.frango.IQuestionsHash;
+import pt.c03ensaios.linnaeus.AnimalsDatabase;
+import pt.c03ensaios.linnaeus.IAnimalsDatabase;
+import pt.c03ensaios.tochinhas2.impl.IQuestions;
+import pt.c03ensaios.tochinhas2.impl.Questions;
 import anima.component.IRequires;
 import anima.component.base.ComponentBase;
 import anima.factory.IGlobalFactory;
@@ -54,23 +62,43 @@ public class EnquirerAdvanced extends ComponentBase implements IEnquirer, IRequi
 		boolean acertei, encontrado = false;
 		String nomeAnimal = null;
 		if(hashAnimals == null){
-			/*try {
+			try {
 	            IGlobalFactory factory = 
 	                ComponentContextFactory.createGlobalFactory();
 	            
 	            factory.registerPrototype(PossibleAnimalsHash.class);
-//	            factory.registerPrototype(IQuestionsHash.class);
-//	            
+	            factory.registerPrototype(AnimalList.class);
+	            factory.registerPrototype(Questions.class);
+	            factory.registerPrototype(AnimalsDatabase.class);
+	            //factory.registerPrototype(IQuestionsHash.class);
 	            
 	            hashAnimals = factory.createInstance(
-	                      "<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>");
-	            
-	            hashAnimals.queryReceptacle(
 	            		"<http://purl.org/dcc/pt.c03ensaios.fejao.PossibleAnimalsHash>");
+	            
+	            IReceptacleAnimalList receptacleList = (IReceptacleAnimalList)hashAnimals.queryInterface(
+	            		"<http://purl.org/dcc/pt.c03ensaios.fejao.IReceptacleAnimalList>");	            
+	            IAnimalList animalList = factory.createInstance(
+                		"<http://purl.org/dcc/pt.c03ensaios.debolacha.impl.AnimalList>");	            
+	            if(receptacleList != null)
+	            	receptacleList.connect(animalList);
+	            
+	            IReceptacleQuestions receptacleQuestions = (IReceptacleQuestions)hashAnimals.queryInterface(
+        				"<http://purl.org/dcc/pt.c03ensaios.fejao.IReceptacleQuestions>");	            
+	            IQuestions questions = factory.createInstance(
+	            		"<http://purl.org/dcc/pt.c03ensaios.tochinhas2.impl.Questions>");	            
+	            if(receptacleQuestions != null)
+	            	receptacleQuestions.connect(questions);
+	            
+	            IReceptacleAnimalsDatabase receptacleAnimalsDatabase = (IReceptacleAnimalsDatabase)hashAnimals.queryInterface(
+	            		"<http://purl.org/dcc/pt.c03ensaios.fejao.IReceptacleAnimalsDatabase>");	            
+	            IAnimalsDatabase animalsDatabase = factory.createInstance(
+	            		"<http://purl.org/dcc/pt.c03ensaios.linnaeus.IAnimalsDatabase>");	            
+	            if(receptacleAnimalsDatabase != null)
+	            	receptacleAnimalsDatabase.connect(animalsDatabase);
 	
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	        }*/
+	        }
 			hashAnimals = new PossibleAnimalsHash();
 		}
         
@@ -80,7 +108,7 @@ public class EnquirerAdvanced extends ComponentBase implements IEnquirer, IRequi
 		// perguntando at� os animais possiveis para a resposta seja somente 1
 		for (int i = 0; ((i < listaPerguntas.size()) && (!encontrado)); i++){
 			/*este exemplo vai no brutal force. Fazendo todas as perguntas.
-			 * O ideal seria utilizar um m�todo que escolha a melhor pergunta.
+			 * O ideal seria utilizar um metodo que escolha a melhor pergunta.
 			 * Fizemos assm apenas para exemplificar o uso.*/
 			String resposta = responder.ask((String)listaPerguntas.get(i));
 

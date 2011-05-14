@@ -6,5 +6,6 @@
         <dcc mainModule="pt.c03ensaios.linnaeus.AnimalsDatabase"/>  
         <dcc mainModule="pt.c03ensaios.linnaeus.AnimalData"/>
         <dcc mainModule="pt.c03ensaios.tochinhas2.impl.Questions"/>
+        <dcc mainModule="pt.c03ensaios.debolacha.impl.AnimalList"/>
     </dccs>
 </config>
