@@ -43,6 +43,7 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 		base = new BaseConhecimento();
 		listNames = base.listaNomes();
 		setPossibleAnimalsArray(listNames);
+		animalList = new AnimalList();
 		
 		if (inserted == false) {
 			try {
@@ -56,81 +57,13 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
 				hashAnswerDontKnow = factory
 						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
-				animalList = factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.debolacha.impl.AnimalList>");
+				//animalList = factory
+				//		.createInstance("<http://purl.org/dcc/pt.c03ensaios.debolacha.impl.AnimalList>");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 			insertAnimalsHash();
-			inserted = true;
-		}
-	}
-	
-	/**
-	 * Alternative class constructor. Receives as parameter an array of strings.
-	 * 
-	 * @param listNames String[] array of strings with the names of animals.
-	 */
-	public PossibleAnimalsHash(String[] listNames){
-		base = new BaseConhecimento();
-		setPossibleAnimalsArray(listNames);
-		this.listNames = listNames;
-		
-		if (inserted == false) {
-			try {
-				IGlobalFactory factory = ComponentContextFactory
-						.createGlobalFactory();
-				factory.registerPrototype(QuestionsHash.class);
-				factory.registerPrototype(AnimalList.class);
-				hashAnswerYes = (factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>"));
-				hashAnswerNo = factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
-				hashAnswerDontKnow = factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.frango.QuestionsHash>");
-				animalList = factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.debolacha.impl.AnimalList>");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			insertAnimalsHash();
-			inserted = true;
-		}
-	}
-	
-	/**
-	 * Alternative class constructor. Receives 3 objects of the type QuestionsHash and connects them.
-	 * 
-	 * @param hashAnswerYes IQuestionsHash object which contains questions and animals whose answers are "Yes".
-	 * @param hashAnswerNo IQuestionsHash object which contains questions and animals whose answers are "No".
-	 * @param hashAnswerDontKnow IQuestionsHash object which contains questions and animals whose answers are "Don't Know".
-	 */
-	public PossibleAnimalsHash(IQuestionsHash hashAnswerYes, 
-			IQuestionsHash hashAnswerNo, IQuestionsHash hashAnswerDontKnow){
-		base = new BaseConhecimento();
-		listNames = base.listaNomes();
-		setPossibleAnimalsArray(listNames);
-
-		if (inserted == false) {
-			try {
-				IGlobalFactory factory = ComponentContextFactory
-						.createGlobalFactory();
-
-				factory.registerPrototype(QuestionsHash.class);
-				factory.registerPrototype(AnimalList.class);
-
-				connect(hashAnswerYes);
-				connect(hashAnswerNo);
-				connect(hashAnswerDontKnow);
-				animalList = factory
-						.createInstance("<http://purl.org/dcc/pt.c03ensaios.debolacha.impl.AnimalList>");
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
 			inserted = true;
 		}
 	}
@@ -337,10 +270,14 @@ public class PossibleAnimalsHash extends ComponentBase implements IPossibleAnima
 			mergeList = l1;
 		} else {
 			String[] list1 = (String[])l1.toArray(new String[l1.size()]);
-			String[] list2 = (String[])l2.toArray(new String[l2.size()]);
-			animalList = new AnimalList(list1);
-			IAnimalList animaList2 = new AnimalList(list2);
-			animalList = animalList.intersec(animaList2);
+			//String[] list2 = (String[])l2.toArray(new String[l2.size()]);
+			//animalList = new AnimalList();
+			animalList.clear();
+			animalList.setList(list1);
+			//IAnimalList animaList2 = new AnimalList();
+			//animaList2.setList(list2);
+			//animalList = animalList.intersec(animaList2);
+			animalList = animalList.intersec(l2);
 			mergeList.addAll(animalList);
 		}
 		return mergeList;
