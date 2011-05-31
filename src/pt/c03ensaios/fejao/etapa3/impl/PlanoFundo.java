@@ -10,7 +10,7 @@ public class PlanoFundo extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
-	Image img = new ImageIcon ( getClass ( ).getResource ( "img/pinguim.jpg" ) ).getImage ( );  
+	Image img = new ImageIcon ( getClass ( ).getResource ( "img/arca_noe_1.jpg" ) ).getImage ( );  
 	  
     public void paintComponent ( Graphics g )  
     {  
