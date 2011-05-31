@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_A0S-oXqJEeCXyvkdUb0Q2Q" name="analizers">
+  <elementImport xmi:id="_A5HNMHqJEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_A5WdwHqJEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_A5WdwXqJEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_A5WdwnqJEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_E7xxYHqJEeCXyvkdUb0Q2Q" name="IAnalizer">
+    <ownedOperation xmi:id="_HNDQcHqJEeCXyvkdUb0Q2Q" name="getBest">
+      <ownedParameter xmi:id="_aTQsUHqJEeCXyvkdUb0Q2Q" direction="return"/>
+      <ownedParameter xmi:id="_aTRTYHqJEeCXyvkdUb0Q2Q" name="String tag"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_HRr40HqJEeCXyvkdUb0Q2Q" name="getBest">
+      <ownedParameter xmi:id="_ZSd9sHqJEeCXyvkdUb0Q2Q" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_RX4swHqJEeCXyvkdUb0Q2Q" name="getOPTTypes">
+      <ownedParameter xmi:id="_S85iwHqJEeCXyvkdUb0Q2Q" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_p7MqgHqJEeCXyvkdUb0Q2Q" name="getOPTList">
+      <ownedParameter xmi:id="_S7G9kHqKEeCXyvkdUb0Q2Q" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+</uml:Package>

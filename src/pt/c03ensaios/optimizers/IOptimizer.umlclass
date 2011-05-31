@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:uml2tools.notation="http://www.eclipse.org/mdt/uml2tools/gmf/notation/ext/2008" xmi:id="_Ez7LBHqLEeCXyvkdUb0Q2Q" type="UMLClass" name="IOptimizer.umlclass" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_FDlXoHqLEeCXyvkdUb0Q2Q" type="2014" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_FDlXonqLEeCXyvkdUb0Q2Q" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_FDlXo3qLEeCXyvkdUb0Q2Q" type="5041"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_FDlXpHqLEeCXyvkdUb0Q2Q" type="7032" collapsed="true">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_FDlXpXqLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_FDlXpnqLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_FDlXp3qLEeCXyvkdUb0Q2Q"/>
+    </children>
+    <element xmi:type="uml:Package" href="IOptimizer.uml#_EzXKUHqLEeCXyvkdUb0Q2Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FDlXoXqLEeCXyvkdUb0Q2Q"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_MyEtUHqLEeCXyvkdUb0Q2Q" type="2013" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_MyEtUnqLEeCXyvkdUb0Q2Q" type="5018"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_MyEtU3qLEeCXyvkdUb0Q2Q" type="5035"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_MyEtVHqLEeCXyvkdUb0Q2Q" type="7029">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_MyEtVXqLEeCXyvkdUb0Q2Q" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MyEtVnqLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MyEtV3qLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_MyEtWHqLEeCXyvkdUb0Q2Q"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_MyEtWXqLEeCXyvkdUb0Q2Q" type="7030">
+      <children xmi:type="notation:Node" xmi:id="_NqBB8HqLEeCXyvkdUb0Q2Q" type="3029">
+        <element xmi:type="uml:Operation" href="IOptimizer.uml#_NprDsHqLEeCXyvkdUb0Q2Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_NqBB8XqLEeCXyvkdUb0Q2Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ONxPQHqLEeCXyvkdUb0Q2Q" type="3029">
+        <element xmi:type="uml:Operation" href="IOptimizer.uml#_ONe7YHqLEeCXyvkdUb0Q2Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ONxPQXqLEeCXyvkdUb0Q2Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_OPVVgHqLEeCXyvkdUb0Q2Q" type="3029">
+        <element xmi:type="uml:Operation" href="IOptimizer.uml#_OPBzgHqLEeCXyvkdUb0Q2Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_OPVVgXqLEeCXyvkdUb0Q2Q"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_MyEtWnqLEeCXyvkdUb0Q2Q" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MyEtW3qLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MyEtXHqLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_MyFUYHqLEeCXyvkdUb0Q2Q"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_MyFUYXqLEeCXyvkdUb0Q2Q" type="7031">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_MyFUYnqLEeCXyvkdUb0Q2Q" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_MyFUY3qLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_MyFUZHqLEeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_MyFUZXqLEeCXyvkdUb0Q2Q"/>
+    </children>
+    <element xmi:type="uml:Interface" href="IOptimizer.uml#_MxuIAHqLEeCXyvkdUb0Q2Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MyEtUXqLEeCXyvkdUb0Q2Q" x="285" y="190"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_Ez7LBXqLEeCXyvkdUb0Q2Q"/>
+  <styles xmi:type="uml2tools.notation:U2TDiagramCanonicalStyle" xmi:id="_Ez7LBnqLEeCXyvkdUb0Q2Q"/>
+  <styles xmi:type="notation:FilteringStyle" xmi:id="_Ez7LB3qLEeCXyvkdUb0Q2Q"/>
+  <element xmi:type="uml:Package" href="IOptimizer.uml#_EzXKUHqLEeCXyvkdUb0Q2Q"/>
+</notation:Diagram>
