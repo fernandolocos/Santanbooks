@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_84zHgHqKEeCXyvkdUb0Q2Q" name="IEnquirerSupports">
+  <elementImport xmi:id="_85dO0HqKEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_85d14HqKEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_85d14XqKEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_85d14nqKEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_-BDwEHqKEeCXyvkdUb0Q2Q" name="IEnquirerSupports">
+    <ownedOperation xmi:id="__dB-0HqKEeCXyvkdUb0Q2Q" name="connect">
+      <ownedParameter xmi:id="_A7b2gHqLEeCXyvkdUb0Q2Q" direction="return"/>
+      <ownedParameter xmi:id="_A7cdkHqLEeCXyvkdUb0Q2Q" name="IResponder responder"/>
+    </ownedOperation>
+  </packagedElement>
+</uml:Package>

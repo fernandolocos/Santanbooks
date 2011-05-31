@@ -1,11 +1,8 @@
 package pt.c03ensaios.frango.app;
 
-import pt.c01interfaces.s01chaveid.s01base.impl.*;
+import pt.c01interfaces.s01chaveid.s01base.impl.BaseConhecimento;
 import pt.c01interfaces.s01chaveid.s01base.inter.IEnquirer;
 import pt.c01interfaces.s01chaveid.s01base.inter.IResponder;
-import pt.c03ensaios.frango.app.EnquirerAdvanced;
-//import pt.c03ensaios.frango.app.EnquirerBasic;
-import pt.c03ensaios.frango.app.Responder;
 
 public class AppTest {
 
@@ -16,7 +13,7 @@ public class AppTest {
 		String namesList[] = bc.listaNomes();
 		
 		//IEnquirer eb = new EnquirerBasic();
-		IEnquirer ea = new EnquirerAdvanced();
+		IEnquirer ea = (IEnquirer) new EnquirerAdvanced();
 		IResponder responder = null;
 
 		// runs all the animals for the enquirer basic and advanced

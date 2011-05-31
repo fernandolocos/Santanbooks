@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:uml2tools.notation="http://www.eclipse.org/mdt/uml2tools/gmf/notation/ext/2008" xmi:id="_E5_IA3qREeCXyvkdUb0Q2Q" type="UMLClass" name="NumQuestionsOptimizer.umlclass" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_FH7dYHqREeCXyvkdUb0Q2Q" type="2014" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_FH8EcHqREeCXyvkdUb0Q2Q" type="5020"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_FH8EcXqREeCXyvkdUb0Q2Q" type="5041"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_FH8EcnqREeCXyvkdUb0Q2Q" type="7032" collapsed="true">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_FH8Ec3qREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_FH8EdHqREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_FH8EdXqREeCXyvkdUb0Q2Q"/>
+    </children>
+    <element xmi:type="uml:Package" href="NumQuestionsOptimizer.uml#_E5c8gHqREeCXyvkdUb0Q2Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FH7dYXqREeCXyvkdUb0Q2Q"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_YO_N0HqREeCXyvkdUb0Q2Q" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_YO_N03qREeCXyvkdUb0Q2Q" type="5003">
+      <styles xmi:type="notation:FontStyle" xmi:id="_YPHwsHqREeCXyvkdUb0Q2Q" bold="true"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_YO_N1HqREeCXyvkdUb0Q2Q" type="5019"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_YO_N1XqREeCXyvkdUb0Q2Q" type="7001">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_YO_N1nqREeCXyvkdUb0Q2Q" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YO_N13qREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YO_N2HqREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_YO_N2XqREeCXyvkdUb0Q2Q"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_YO_04HqREeCXyvkdUb0Q2Q" type="7002">
+      <children xmi:type="notation:Node" xmi:id="_bvanoHqREeCXyvkdUb0Q2Q" type="3002">
+        <element xmi:type="uml:Operation" href="NumQuestionsOptimizer.uml#_bvHFoHqREeCXyvkdUb0Q2Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_bvanoXqREeCXyvkdUb0Q2Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_cpMIQHqREeCXyvkdUb0Q2Q" type="3002">
+        <element xmi:type="uml:Operation" href="NumQuestionsOptimizer.uml#_co7CgHqREeCXyvkdUb0Q2Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_cpMIQXqREeCXyvkdUb0Q2Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_cr5eAHqREeCXyvkdUb0Q2Q" type="3002">
+        <element xmi:type="uml:Operation" href="NumQuestionsOptimizer.uml#_crsCoHqREeCXyvkdUb0Q2Q"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_cr5eAXqREeCXyvkdUb0Q2Q"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_YO_04XqREeCXyvkdUb0Q2Q" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YO_04nqREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YO_043qREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_YO_05HqREeCXyvkdUb0Q2Q"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_YO_05XqREeCXyvkdUb0Q2Q" type="7003">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_YO_05nqREeCXyvkdUb0Q2Q" showTitle="true"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YO_053qREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YO_06HqREeCXyvkdUb0Q2Q"/>
+      <styles xmi:type="notation:CanonicalStyle" xmi:id="_YO_06XqREeCXyvkdUb0Q2Q"/>
+    </children>
+    <styles xmi:type="notation:CanonicalStyle" xmi:id="_YO_N0XqREeCXyvkdUb0Q2Q"/>
+    <element xmi:type="uml:Class" href="NumQuestionsOptimizer.uml#_YOkXEHqREeCXyvkdUb0Q2Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YO_N0nqREeCXyvkdUb0Q2Q" x="190" y="196"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_h8w6sHqREeCXyvkdUb0Q2Q" type="2010" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_h8w6snqREeCXyvkdUb0Q2Q" type="5012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_h8w6s3qREeCXyvkdUb0Q2Q" y="5"/>
+    </children>
+    <element xmi:type="uml:Interface" href="NumQuestionsOptimizer.uml#_h8cxoHqREeCXyvkdUb0Q2Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h8w6sXqREeCXyvkdUb0Q2Q" x="498" y="245"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_E5_IBHqREeCXyvkdUb0Q2Q"/>
+  <styles xmi:type="uml2tools.notation:U2TDiagramCanonicalStyle" xmi:id="_E5_IBXqREeCXyvkdUb0Q2Q"/>
+  <styles xmi:type="notation:FilteringStyle" xmi:id="_E5_IBnqREeCXyvkdUb0Q2Q"/>
+  <element xmi:type="uml:Package" href="NumQuestionsOptimizer.uml#_E5c8gHqREeCXyvkdUb0Q2Q"/>
+  <edges xmi:type="notation:Connector" xmi:id="_i1sGwHqREeCXyvkdUb0Q2Q" type="4008" source="_YO_N0HqREeCXyvkdUb0Q2Q" target="_h8w6sHqREeCXyvkdUb0Q2Q">
+    <children xmi:type="notation:DecorationNode" xmi:id="_i1st0HqREeCXyvkdUb0Q2Q" type="6020">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_i1st0XqREeCXyvkdUb0Q2Q" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_i1sGwXqREeCXyvkdUb0Q2Q" fontName="Ubuntu"/>
+    <element xmi:type="uml:InterfaceRealization" href="NumQuestionsOptimizer.uml#_i1nOQHqREeCXyvkdUb0Q2Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i1sGwnqREeCXyvkdUb0Q2Q" points="[99, -2, -117, 2]$[209, -4, -7, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_i1wYMHqREeCXyvkdUb0Q2Q" type="4008" source="_YO_N0HqREeCXyvkdUb0Q2Q" target="_h8w6sHqREeCXyvkdUb0Q2Q">
+    <children xmi:type="notation:DecorationNode" xmi:id="_i1wYM3qREeCXyvkdUb0Q2Q" type="6020">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_i1wYNHqREeCXyvkdUb0Q2Q" y="40"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_i1wYMXqREeCXyvkdUb0Q2Q" fontName="Ubuntu"/>
+    <element xmi:type="uml:InterfaceRealization" href="NumQuestionsOptimizer.uml#_i1nOQHqREeCXyvkdUb0Q2Q"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i1wYMnqREeCXyvkdUb0Q2Q" points="[10, 2, -122, -36]$[135, 37, 3, -1]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i1yNYHqREeCXyvkdUb0Q2Q" id="(0.9494949494949495,0.15)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i1yNYXqREeCXyvkdUb0Q2Q" id="(0.8,0.4666666666666667)"/>
+  </edges>
+</notation:Diagram>

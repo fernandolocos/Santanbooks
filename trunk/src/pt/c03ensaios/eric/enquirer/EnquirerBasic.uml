@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_GsU6QHqPEeCXyvkdUb0Q2Q" name="EnquirerBasic">
+  <elementImport xmi:id="_GsxmMHqPEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_GsxmMXqPEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_GsxmMnqPEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_GsxmM3qPEeCXyvkdUb0Q2Q">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_HU3rgHqQEeCXyvkdUb0Q2Q" name="EnquirerBasic" clientDependency="_cMezkHqQEeCXyvkdUb0Q2Q _iTenAHqQEeCXyvkdUb0Q2Q">
+    <ownedAttribute xmi:id="_JjVuMHqQEeCXyvkdUb0Q2Q" name="base" aggregation="composite"/>
+    <ownedAttribute xmi:id="_LU8OsHqQEeCXyvkdUb0Q2Q" name="NOMES" aggregation="composite"/>
+    <ownedAttribute xmi:id="_LWmbkHqQEeCXyvkdUb0Q2Q" name="TAMANHO" aggregation="composite"/>
+    <ownedAttribute xmi:id="_LYTrwHqQEeCXyvkdUb0Q2Q" name="EXPECTATIVA_PERGUNTAS_POR_ANIMAL" aggregation="composite"/>
+    <ownedAttribute xmi:id="_LZ_t0HqQEeCXyvkdUb0Q2Q" name="animalEscolhido" aggregation="composite"/>
+    <ownedAttribute xmi:id="_LbhX0HqQEeCXyvkdUb0Q2Q" name="quantidadeAcertada" aggregation="composite"/>
+    <ownedAttribute xmi:id="_TXP4QHqQEeCXyvkdUb0Q2Q" name="perguntasFeitas" aggregation="composite"/>
+    <interfaceRealization xmi:id="_cMezkHqQEeCXyvkdUb0Q2Q" supplier="_XZSxYHqQEeCXyvkdUb0Q2Q" client="_HU3rgHqQEeCXyvkdUb0Q2Q" contract="_XZSxYHqQEeCXyvkdUb0Q2Q"/>
+    <interfaceRealization xmi:id="_iTenAHqQEeCXyvkdUb0Q2Q" supplier="_ZMwTEHqQEeCXyvkdUb0Q2Q" client="_HU3rgHqQEeCXyvkdUb0Q2Q" contract="_ZMwTEHqQEeCXyvkdUb0Q2Q"/>
+    <ownedOperation xmi:id="_T9A3wHqQEeCXyvkdUb0Q2Q" name="connect">
+      <ownedParameter xmi:id="_VU4poHqQEeCXyvkdUb0Q2Q" direction="return"/>
+      <ownedParameter xmi:id="_VU5QsHqQEeCXyvkdUb0Q2Q" name="IResponder responder"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_nkE98HqQEeCXyvkdUb0Q2Q" name="verifica">
+      <ownedParameter xmi:id="_nuxLAHqQEeCXyvkdUb0Q2Q" direction="return"/>
+      <ownedParameter xmi:id="_nuxyEHqQEeCXyvkdUb0Q2Q" name="IDeclaracao decPergunta"/>
+      <ownedParameter xmi:id="_nuyZIHqQEeCXyvkdUb0Q2Q" name="IResponder canal"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_psrpMHqQEeCXyvkdUb0Q2Q" name="setAnimalEscolhido">
+      <ownedParameter xmi:id="_qTB3gHqQEeCXyvkdUb0Q2Q" direction="return"/>
+      <ownedParameter xmi:id="_qTCekHqQEeCXyvkdUb0Q2Q" name="String animalEscolhido"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_puUn8HqQEeCXyvkdUb0Q2Q" name="setQuantidadeAcertada">
+      <ownedParameter xmi:id="_r8XM0HqQEeCXyvkdUb0Q2Q" direction="return"/>
+      <ownedParameter xmi:id="_r8Xz4HqQEeCXyvkdUb0Q2Q" name="int quantidadeAcertada"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_pwKbAHqQEeCXyvkdUb0Q2Q" name="exibeResultado">
+      <ownedParameter xmi:id="_tR_jAHqQEeCXyvkdUb0Q2Q" direction="return"/>
+      <ownedParameter xmi:id="_tR_jAXqQEeCXyvkdUb0Q2Q" name="IResponder responder"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_XZSxYHqQEeCXyvkdUb0Q2Q" name="IEnquirerSupports"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_ZMwTEHqQEeCXyvkdUb0Q2Q" name="IEnquirer"/>
+</uml:Package>
