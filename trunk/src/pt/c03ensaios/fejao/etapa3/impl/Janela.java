@@ -13,7 +13,7 @@ public class Janela extends JFrame{
 	private static int yDoMouse = 0;
 
     public Janela(){
-       this.setSize(1024,760);                       
+       this.setSize(800,700);                       
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        this.setLayout(new BorderLayout());
        this.add(pnlFundo, BorderLayout.CENTER);

@@ -1,0 +1,5 @@
+aranha
+camarao
+pikachu
+humano
+tiranossauro
